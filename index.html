@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>قمم عسير | Aseer Peaks — المنصة السياحية والبيئية لمنطقة عسير</title>
+  <meta name="description" content="البوابة الرقمية الشاملة لسياحة عسير — استكشاف قمم السودة ورجال ألمع، دعم المزارع والمتاجر العسيرية الأصيلة، وتخطيط الرحلات والتجارب فوق السحاب." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ==========================================================================
+       ASEER PEAKS DESIGN SYSTEM (قمم عسير — الهوية المعاصرة لمنطقة عسير)
+       Pristine Mountains · Sea of Clouds · Local Artisan Empowerment
+       ========================================================================== */
+    :root {
+      --asir-dark: #07120f;
+      --asir-surface: #0c1d18;
+      --asir-card: #112620;
+      --asir-card-hover: #16322a;
+      --asir-border: rgba(255, 255, 255, 0.09);
+      --asir-border-focus: rgba(16, 185, 129, 0.45);
+      --asir-emerald: #10b981;
+      --asir-emerald-dark: #059669;
+      --asir-emerald-glow: rgba(16, 185, 129, 0.25);
+      --asir-gold: #f59e0b;
+      --asir-gold-dark: #d97706;
+      --asir-terracotta: #ea580c;
+      --asir-sky: #38bdf8;
+      --asir-text-primary: #f8fafc;
+      --asir-text-muted: #94a3b8;
+      --asir-text-dark: #0f172a;
+      --font-arabic: "Noto Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-english: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background-color: var(--asir-dark);
+      color: var(--asir-text-primary);
+      font-family: var(--font-arabic);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: #1f3b33 #07120f;
+    }
+
+    body {
+      background-color: var(--asir-dark);
+      color: var(--asir-text-primary);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ================= 1. LIVE TELEMETRY WEATHER TICKER (36px) ================= */
+    .telemetry-ticker {
+      height: 38px;
+      background: linear-gradient(90deg, #051410 0%, #0d2821 50%, #051410 100%);
+      border-bottom: 1px solid rgba(16, 185, 129, 0.15);
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      z-index: 101;
+    }
+
+    .ticker-inner {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      white-space: nowrap;
+      animation: tickerLoop 35s linear infinite;
+    }
+
+    .ticker-inner:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes tickerLoop {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(50%); }
+    }
+
+    [dir="ltr"] @keyframes tickerLoop {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #e2e8f0;
+    }
+
+    .ticker-item strong {
+      color: var(--asir-emerald);
+      font-weight: 700;
+    }
+
+    .ticker-badge {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.18);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #6ee7b7;
+      font-family: var(--font-mono);
+    }
+
+    /* ================= 2. GLOBAL GLASS NAVIGATION (64px) ================= */
+    .asir-nav {
+      position: sticky;
+      top: 0;
+      height: 64px;
+      width: 100%;
+      background: rgba(7, 18, 15, 0.86);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1240px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
+      color: #ffffff;
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .brand-title small {
+      display: block;
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--asir-gold);
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(248, 250, 252, 0.85);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--asir-emerald);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-emerald {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff;
+      border: none;
+      padding: 9px 20px;
+      border-radius: 980px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 18px rgba(16, 185, 129, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      font-family: inherit;
+    }
+
+    .btn-emerald:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.5);
+    }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #f8fafc;
+      padding: 9px 18px;
+      border-radius: 980px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(12px);
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.36);
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #e2e8f0;
+      padding: 6px 14px;
+      border-radius: 980px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .lang-btn:hover {
+      border-color: var(--asir-emerald);
+      color: #ffffff;
+    }
+
+    /* ================= 3. CINEMA HERO SECTION ================= */
+    .hero-section {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px 60px;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(16, 185, 129, 0.14) 0%, transparent 65%),
+        #07120f;
+      overflow: hidden;
+    }
+
+    .hero-bg-media {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .hero-bg-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.62;
+      filter: brightness(0.92) contrast(1.08);
+      transform: scale(1.02);
+      transition: transform 10s ease;
+    }
+
+    .hero-bg-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7, 18, 15, 0.5) 0%, rgba(7, 18, 15, 0.82) 70%, #07120f 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 20px;
+      border-radius: 980px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.38);
+      color: #a7f3d0;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 22px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-headline {
+      font-size: clamp(2.8rem, 6.2vw, 5.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+      background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 60%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subhead {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: #cbd5e1;
+      max-width: 720px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    /* Fast Search & Booking Bar */
+    .hero-search-hub {
+      background: rgba(12, 29, 24, 0.88);
+      backdrop-filter: saturate(180%) blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 24px;
+      padding: 16px 20px;
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+    }
+
+    .search-field {
+      text-align: right;
+      padding: 4px 12px;
+    }
+
+    [dir="ltr"] .search-field {
+      text-align: left;
+    }
+
+    .search-field label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--asir-gold);
+      margin-bottom: 4px;
+    }
+
+    .search-field select,
+    .search-field input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: inherit;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .search-field select option {
+      background: #0c1d18;
+      color: #ffffff;
+    }
+
+    /* ================= 4. DESTINATIONS EXPLORER ================= */
+    .section-wrap {
+      padding: 96px 24px;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 44px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .section-tag {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--asir-emerald);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.8vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--asir-text-muted);
+      max-width: 520px;
+    }
+
+    /* Destination Tabs & Showcase Stage */
+    .dest-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 28px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .dest-tab-btn {
+      background: var(--asir-surface);
+      border: 1px solid var(--asir-border);
+      color: var(--asir-text-muted);
+      padding: 10px 22px;
+      border-radius: 980px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dest-tab-btn.active {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(4, 120, 87, 0.35));
+      border-color: var(--asir-emerald);
+      color: #ffffff;
+      box-shadow: 0 4px 20px var(--asir-emerald-glow);
+    }
+
+    .dest-showcase-card {
+      background: var(--asir-surface);
+      border-radius: 32px;
+      border: 1px solid var(--asir-border);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s ease;
+    }
+
+    .dest-photo-pane {
+      position: relative;
+      height: 480px;
+      overflow: hidden;
+    }
+
+    .dest-photo-pane img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .dest-showcase-card:hover .dest-photo-pane img {
+      transform: scale(1.03);
+    }
+
+    .dest-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(7, 18, 15, 0.85) 100%);
+    }
+
+    .dest-telemetry-badge {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: rgba(7, 18, 15, 0.82);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 10px 16px;
+      font-size: 12px;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    [dir="ltr"] .dest-telemetry-badge {
+      right: auto;
+      left: 24px;
+    }
+
+    .dest-info-pane {
+      padding: 44px 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .dest-title-wrap h3 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .dest-desc {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--asir-text-muted);
+      margin-bottom: 24px;
+    }
+
+    .dest-highlights-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .dest-highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: #e2e8f0;
+    }
+
+    .dest-highlight-item svg {
+      color: var(--asir-emerald);
+      flex-shrink: 0;
+    }
+
+    /* ================= 5. MERCHANTS & ARTISANS MARKETPLACE ================= */
+    .market-section {
+      background: #050e0c;
+      border-top: 1px solid var(--asir-border);
+      border-bottom: 1px solid var(--asir-border);
+    }
+
+    .market-filter-pills {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+
+    .filter-pill {
+      background: var(--asir-surface);
+      border: 1px solid var(--asir-border);
+      color: var(--asir-text-muted);
+      padding: 8px 18px;
+      border-radius: 980px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .filter-pill.active {
+      background: var(--asir-emerald);
+      border-color: var(--asir-emerald);
+      color: #ffffff;
+      box-shadow: 0 4px 16px var(--asir-emerald-glow);
+    }
+
+    .merchants-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .merchant-card {
+      background: var(--asir-surface);
+      border-radius: 24px;
+      border: 1px solid var(--asir-border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .merchant-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(16, 185, 129, 0.4);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+    }
+
+    .merchant-thumb {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .merchant-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .merchant-card:hover .merchant-thumb img {
+      transform: scale(1.05);
+    }
+
+    .verified-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(7, 18, 15, 0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 5px 12px;
+      border-radius: 980px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #6ee7b7;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    [dir="ltr"] .verified-badge {
+      right: auto;
+      left: 14px;
+    }
+
+    .merchant-body {
+      padding: 24px 22px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .merchant-category {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--asir-gold);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .merchant-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: 4px;
+    }
+
+    .merchant-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--asir-text-muted);
+    }
+
+    .merchant-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--asir-border);
+      padding-top: 14px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .merchant-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    /* ================= 6. INTERACTIVE AI TRIP PLANNER ================= */
+    .planner-card {
+      background: radial-gradient(circle at 100% 0%, #133328 0%, #0c1d18 70%);
+      border-radius: 32px;
+      border: 1px solid rgba(16, 185, 129, 0.28);
+      padding: 44px;
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.75);
+    }
+
+    .planner-controls-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 32px 0;
+    }
+
+    .planner-option-box {
+      background: rgba(7, 18, 15, 0.6);
+      border: 1px solid var(--asir-border);
+      border-radius: 20px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .planner-option-box.selected {
+      border-color: var(--asir-emerald);
+      background: rgba(16, 185, 129, 0.14);
+      box-shadow: 0 8px 24px var(--asir-emerald-glow);
+    }
+
+    .planner-option-box h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .planner-option-box p {
+      font-size: 12px;
+      color: var(--asir-text-muted);
+      line-height: 1.5;
+    }
+
+    /* Generated Itinerary Display */
+    .itinerary-output {
+      background: rgba(7, 18, 15, 0.85);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 32px;
+      margin-top: 28px;
+    }
+
+    .itinerary-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: relative;
+      margin-top: 24px;
+    }
+
+    .itinerary-timeline::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      bottom: 10px;
+      right: 19px;
+      width: 2px;
+      background: rgba(16, 185, 129, 0.3);
+    }
+
+    [dir="ltr"] .itinerary-timeline::before {
+      right: auto;
+      left: 19px;
+    }
+
+    .timeline-step {
+      display: flex;
+      gap: 20px;
+      position: relative;
+    }
+
+    .step-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #0c1d18;
+      border: 2px solid var(--asir-emerald);
+      color: var(--asir-emerald);
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+      z-index: 2;
+    }
+
+    .step-content {
+      background: var(--asir-surface);
+      border: 1px solid var(--asir-border);
+      border-radius: 18px;
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    .step-time {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--asir-gold);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .step-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: var(--asir-text-muted);
+      line-height: 1.6;
+    }
+
+    /* ================= 7. PARTNER ONBOARDING HERO BANNER ================= */
+    .partner-banner {
+      background: linear-gradient(135deg, #10b981 0%, #064e3b 100%);
+      border-radius: 32px;
+      padding: 56px 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 32px;
+      box-shadow: 0 32px 80px rgba(16, 185, 129, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .partner-banner::after {
+      content: "";
+      position: absolute;
+      right: -10%;
+      top: -30%;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .partner-text {
+      max-width: 620px;
+      color: #ffffff;
+    }
+
+    .partner-text h3 {
+      font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .partner-text p {
+      font-size: 15px;
+      color: #d1fae5;
+      line-height: 1.7;
+    }
+
+    .btn-partner-white {
+      background: #ffffff;
+      color: #064e3b;
+      padding: 14px 32px;
+      border-radius: 980px;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-partner-white:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+    }
+
+    /* ================= 8. NATIVE <DIALOG> MODAL (OVERFLOW CONTAINED) ================= */
+    dialog.asir-modal {
+      margin: auto;
+      width: min(600px, 92vw);
+      max-height: 88vh;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      border-radius: 28px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      background: rgba(12, 29, 24, 0.95);
+      backdrop-filter: saturate(180%) blur(28px);
+      -webkit-backdrop-filter: saturate(180%) blur(28px);
+      color: #f8fafc;
+      padding: 36px;
+      box-shadow: 0 32px 96px rgba(0, 0, 0, 0.85);
+    }
+
+    dialog.asir-modal::backdrop {
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      overscroll-behavior: contain;
+    }
+
+    .modal-form-group {
+      margin-bottom: 18px;
+      text-align: right;
+    }
+
+    [dir="ltr"] .modal-form-group {
+      text-align: left;
+    }
+
+    .modal-form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-bottom: 6px;
+    }
+
+    .modal-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 12px 16px;
+      color: #ffffff;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .modal-input:focus {
+      border-color: var(--asir-emerald);
+      box-shadow: 0 0 0 3px var(--asir-emerald-glow);
+    }
+
+    /* ================= 9. FOOTER ================= */
+    .asir-footer {
+      background: #040908;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 56px 24px 36px;
+      font-size: 13px;
+      color: var(--asir-text-muted);
+    }
+
+    .footer-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 900px) {
+      .hero-search-hub {
+        grid-template-columns: 1fr;
+      }
+      .dest-showcase-card {
+        grid-template-columns: 1fr;
+      }
+      .planner-controls-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= 1. LIVE TELEMETRY WEATHER TICKER ================= -->
+  <aside class="telemetry-ticker" aria-label="Asir Live Weather and Telemetry">
+    <div class="ticker-inner">
+      <div class="ticker-item">
+        <span class="ticker-badge">السودة 3,015م</span>
+        <span>درجة الحرارة: <strong>17°C</strong></span>
+        <span>• ضباب كثيف ومعانقة السحاب 98%</span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-badge">أبها البهية 2,270م</span>
+        <span>درجة الحرارة: <strong>21°C</strong></span>
+        <span>• نسيم جبلي عليل وممشى الضباب مفتوح</span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-badge">رجال ألمع 1,250م</span>
+        <span>درجة الحرارة: <strong>25°C</strong></span>
+        <span>• أجواء دافئة وقلاع التراث العالمي جاهزة لاستقبال الزوار</span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-badge">تنومة والنماص 2,400م</span>
+        <span>درجة الحرارة: <strong>19°C</strong></span>
+        <span>• شلالات دهناء ومزارع البن الخولاني والعسل</span>
+      </div>
+      <!-- Duplicate for infinite seamless marquee -->
+      <div class="ticker-item">
+        <span class="ticker-badge">السودة 3,015م</span>
+        <span>درجة الحرارة: <strong>17°C</strong></span>
+        <span>• ضباب كثيف ومعانقة السحاب 98%</span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-badge">أبها البهية 2,270م</span>
+        <span>درجة الحرارة: <strong>21°C</strong></span>
+        <span>• نسيم جبلي عليل وممشى الضباب مفتوح</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ================= 2. GLOBAL NAVIGATION ================= -->
+  <header class="asir-nav" role="banner">
+    <div class="nav-container">
+      <a href="#home" class="brand-logo" aria-label="قمم عسير — الرئيسية">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 3l4 8 5-5 5 15H2L8 3z"></path>
+          </svg>
+        </div>
+        <div class="brand-title">
+          <span id="txt-brand-name">قمم عسير</span>
+          <small id="txt-brand-sub">ASEER PEAKS</small>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="#destinations" id="txt-nav-dest">الوجهات الأيقونية</a>
+        <a href="#marketplace" id="txt-nav-market">سوق المزارع والمتاجر</a>
+        <a href="#planner" id="txt-nav-plan">مخطط الرحلات الذكي</a>
+        <a href="#partners" id="txt-nav-partner">بوابة التجار والمزارع</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="lang-btn" onclick="toggleLanguage()" id="txt-lang-toggle">English</button>
+        <button type="button" class="btn-glass" onclick="openPartnerModal()" id="txt-btn-add-store">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          <span>سجّل متجرك</span>
+        </button>
+        <a href="#planner" class="btn-emerald" id="txt-btn-plan-trip">
+          <span>خطّط لرحلتك</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 3. CINEMA HERO SECTION ================= -->
+  <section class="hero-section" id="home">
+    <div class="hero-bg-media">
+      <img src="assets/hero_asir_peaks.jpg" alt="سحب تعانق قمم جبال عسير وقلاع السودة الأثرية" fetchpriority="high" />
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-pill-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span id="txt-hero-pill">موسم السحاب والمطر في قمم عسير ٢٠٢٦</span>
+      </div>
+
+      <h1 class="hero-headline" id="txt-hero-h1">
+        فوق السحاب،<br>تبدأ حكايتك في عسير
+      </h1>
+
+      <p class="hero-subhead" id="txt-hero-p">
+        المنصة الذكية المتكاملة لاستكشاف أعلى قمم المملكة، دعم مزارع البن ومناحل العسل العسيرية الأصيلة، وحجز خيرة التجارب والمغامرات السياحية.
+      </p>
+
+      <!-- Fast Search & Booking Hub -->
+      <form class="hero-search-hub" onsubmit="event.preventDefault(); triggerSearch();" aria-label="محرك استكشاف عسير السريع">
+        <div class="search-field">
+          <label id="lbl-dest" for="sel-dest">الوجهة المستهدفة</label>
+          <select id="sel-dest" aria-label="الوجهة المستهدفة">
+            <option value="soudah">السودة (قمة 3,015م)</option>
+            <option value="rijal">رجال ألمع (التراث العالمي)</option>
+            <option value="tanomah">تنومة والنماص (مزارع وغابات)</option>
+            <option value="abha">أبها البهية (الفن والضباب)</option>
+          </select>
+        </div>
+
+        <div class="search-field">
+          <label id="lbl-type" for="sel-type">نوع النشاط أو المنتج</label>
+          <select id="sel-type" aria-label="نوع النشاط">
+            <option value="all">جميع التجارب والمتاجر</option>
+            <option value="coffee">مزارع بن خولاني ومقاهي</option>
+            <option value="honey">مناحل عسل السدر والطلح</option>
+            <option value="hiking">هايكنج وطيران شراعي</option>
+            <option value="stay">أكواخ ونزل السحاب الريفية</option>
+          </select>
+        </div>
+
+        <div class="search-field">
+          <label id="lbl-date" for="sel-date">موعد الزيارة</label>
+          <select id="sel-date" aria-label="موعد الزيارة">
+            <option>نهاية هذا الأسبوع</option>
+            <option>خلال الشهر الجاري</option>
+            <option>موسم الأمطار والصيف</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-emerald" style="padding:14px 28px;font-size:15px;" id="txt-search-btn">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <span>استكشف عسير</span>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= 4. DESTINATIONS EXPLORER ================= -->
+  <section class="section-wrap" id="destinations">
+    <div class="section-head">
+      <div>
+        <span class="section-tag" id="txt-dest-tag">وجهات لا تُنسى</span>
+        <h2 class="section-title" id="txt-dest-title">معالم عسير بين الطبيعة العذراء والتاريخ</h2>
+      </div>
+      <p class="section-sub" id="txt-dest-sub">
+        تنقل بين أعلى قمم جبال السروات، وشاهد شلالات تنومة، واستكشف قلاع رجال ألمع المبنية من الحجر والكوارتز.
+      </p>
+    </div>
+
+    <!-- Destination Filter Tabs -->
+    <div class="dest-tabs" role="tablist">
+      <button type="button" class="dest-tab-btn active" onclick="switchDest('soudah', this)" id="tab-soudah">
+        <span>السودة وأعالي السروات (3,015م)</span>
+      </button>
+      <button type="button" class="dest-tab-btn" onclick="switchDest('rijal', this)" id="tab-rijal">
+        <span>رجال ألمع وقلاع الكوارتز</span>
+      </button>
+      <button type="button" class="dest-tab-btn" onclick="switchDest('tanomah', this)" id="tab-tanomah">
+        <span>مزارع البن وشلالات تنومة</span>
+      </button>
+      <button type="button" class="dest-tab-btn" onclick="switchDest('adventure', this)" id="tab-adventure">
+        <span>مسارات المغامرة والهايكنج</span>
+      </button>
+    </div>
+
+    <!-- Active Destination Showcase Card -->
+    <div class="dest-showcase-card" id="destCard">
+      <div class="dest-photo-pane">
+        <img id="destImg" src="assets/hero_asir_peaks.jpg" alt="جبال السودة في عسير" />
+        <div class="dest-photo-overlay"></div>
+        <div class="dest-telemetry-badge" id="destBadge">
+          <span style="font-weight:700;color:#10b981;">الارتفاع: 3,015 متر</span>
+          <span>الأجواء: ضباب مستمر وبحر من الغيوم</span>
+        </div>
+      </div>
+
+      <div class="dest-info-pane">
+        <div class="dest-title-wrap">
+          <h3 id="destTitle">السودة — عاصمة الضباب والمغامرات</h3>
+          <p class="dest-desc" id="destDesc">
+            أعلى نقطة جغرافية في المملكة العربية السعودية. حيث تلتقي غابات العرعر الكثيفة بأمواج الضباب، مع تجارب تلفريك معلق يطل على الأخاديد السحيقة، ومسارات هايكنج تنتهي بمشاهد بانورامية تحبس الأنفاس.
+          </p>
+        </div>
+
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--asir-gold);margin-bottom:12px;" id="txt-highlights-hdr">أبرز الأنشطة والتجارب المعتمدة:</div>
+          <div class="dest-highlights-list" id="destHighlights">
+            <div class="dest-highlight-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>تجربة ركوب التلفريك المعلق نحو وادي العوص ورجال ألمع</span>
+            </div>
+            <div class="dest-highlight-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>مسارات الهايكنج الجبلي برفقة مرشدين سياحيين محليين معتمدين</span>
+            </div>
+            <div class="dest-highlight-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>التخييم الفاخر وجلسات السحاب في مطلات السودة البانورامية</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+          <button type="button" class="btn-emerald" onclick="openBookingModal('السودة — قمة المملكة')" id="txt-book-exp">
+            <span>احجز تجربة في هذه الوجهة</span>
+          </button>
+          <a href="#marketplace" class="btn-glass" id="txt-view-stores">
+            <span>استعرض متاجر ومزارع المنطقة</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. MERCHANTS & ARTISANS MARKETPLACE ================= -->
+  <section class="section-wrap market-section" id="marketplace">
+    <div class="section-head">
+      <div>
+        <span class="section-tag" id="txt-market-tag">سوق عسير المحلي الرقمي</span>
+        <h2 class="section-title" id="txt-market-title">دعم المزارع والمتاجر والحرفيين الأصليين</h2>
+      </div>
+      <p class="section-sub" id="txt-market-sub">
+        تسوّق وتواصل مباشرة مع أصحاب المزارع والمناحل والحرفيين في عسير بدون وسيط، مع ضمان وثيقة الجودة المعتمدة.
+      </p>
+    </div>
+
+    <!-- Filter Pills -->
+    <div class="market-filter-pills" role="tablist">
+      <button type="button" class="filter-pill active" onclick="filterMarket('all', this)" id="pill-all">الكل (٦ متاجر مميزة)</button>
+      <button type="button" class="filter-pill" onclick="filterMarket('coffee', this)" id="pill-coffee">مزارع البن الخولاني</button>
+      <button type="button" class="filter-pill" onclick="filterMarket('honey', this)" id="pill-honey">مناحل العسل الجبلي</button>
+      <button type="button" class="filter-pill" onclick="filterMarket('qatt', this)" id="pill-qatt">فن القط والحرف التراثية</button>
+      <button type="button" class="filter-pill" onclick="filterMarket('stay', this)" id="pill-stay">أكواخ ونزل السحاب</button>
+    </div>
+
+    <!-- Merchants Grid -->
+    <div class="merchants-grid" id="merchantsGrid">
+      <!-- Merchant 1: Khawlani Coffee -->
+      <article class="merchant-card" data-cat="coffee">
+        <div class="merchant-thumb">
+          <img src="assets/coffee_honey_terrace.jpg" alt="مزرعة بن عسير الخولاني" loading="lazy" />
+          <div class="verified-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>ختم جودة عسير</span>
+          </div>
+        </div>
+        <div class="merchant-body">
+          <div>
+            <span class="merchant-category">مزرعة بن مختص ومقهى ريفي</span>
+            <h3 class="merchant-name">مزرعة قمم البن الخولاني</h3>
+            <p class="merchant-desc">
+              بن خولاني سعودي فاخر من مدرجات جبال تنومة على ارتفاع 2,200م. نوفر جلسات تذوق القهوة وتجربة جني الثمار بين المزارع العتيقة.
+            </p>
+          </div>
+          <div class="merchant-meta-row">
+            <span>📍 تنومة · جبال منعاء</span>
+            <span>⭐ 4.9 (184 تقييم)</span>
+          </div>
+          <div class="merchant-actions">
+            <button type="button" class="btn-emerald" style="padding:8px 12px;font-size:12px;" onclick="openDirectMerchant('مزرعة قمم البن الخولاني', '0550000001')">
+              <span>تواصل واتساب</span>
+            </button>
+            <button type="button" class="btn-glass" style="padding:8px 12px;font-size:12px;" onclick="openMapLocation('مزرعة قمم البن الخولاني')">
+              <span>الموقع بالخريطة</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Merchant 2: Asir Honey -->
+      <article class="merchant-card" data-cat="honey">
+        <div class="merchant-thumb">
+          <img src="assets/coffee_honey_terrace.jpg" alt="مناحل سدر رجال ألمع" style="filter:hue-rotate(25deg);" loading="lazy" />
+          <div class="verified-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>عسل جبلي مفحوص</span>
+          </div>
+        </div>
+        <div class="merchant-body">
+          <div>
+            <span class="merchant-category">مناحل ومحاصيل جبلية</span>
+            <h3 class="merchant-name">مناحل عسل السدر والمجرى الألمعي</h3>
+            <p class="merchant-desc">
+              عسل سدر بلدي ومجرى أبيض نادر من أشجار السدر المعمرة في أودية رجال ألمع. مفحوص مخبرياً بنسبة نقاء 100% مع شحن لجميع المناطق.
+            </p>
+          </div>
+          <div class="merchant-meta-row">
+            <span>📍 رجال ألمع · وادي العوص</span>
+            <span>⭐ 5.0 (215 تقييم)</span>
+          </div>
+          <div class="merchant-actions">
+            <button type="button" class="btn-emerald" style="padding:8px 12px;font-size:12px;" onclick="openDirectMerchant('مناحل عسل السدر والمجرى', '0550000002')">
+              <span>تواصل واتساب</span>
+            </button>
+            <button type="button" class="btn-glass" style="padding:8px 12px;font-size:12px;" onclick="openMapLocation('مناحل عسل السدر والمجرى')">
+              <span>الموقع بالخريطة</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Merchant 3: Qatt Art Gallery -->
+      <article class="merchant-card" data-cat="qatt">
+        <div class="merchant-thumb">
+          <img src="assets/rijal_almaa.jpg" alt="متجر فن القط العسيري" loading="lazy" />
+          <div class="verified-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>تراث يونيسكو معتمد</span>
+          </div>
+        </div>
+        <div class="merchant-body">
+          <div>
+            <span class="merchant-category">حرف يدوية وفنون جدارية</span>
+            <h3 class="merchant-name">محترف القط العسيري الأصيل</h3>
+            <p class="merchant-desc">
+              مقتنيات فنية، لوحات جدارية، وأوشحة مرسومة بأنامل فنانات عسير المحترفات وفق رموز فن القَط العسيري المسجل بقائمة التراث الإنساني.
+            </p>
+          </div>
+          <div class="merchant-meta-row">
+            <span>📍 أبها · قرية المفتاحة التشكيلية</span>
+            <span>⭐ 4.9 (98 تقييم)</span>
+          </div>
+          <div class="merchant-actions">
+            <button type="button" class="btn-emerald" style="padding:8px 12px;font-size:12px;" onclick="openDirectMerchant('محترف القط العسيري', '0550000003')">
+              <span>تواصل واتساب</span>
+            </button>
+            <button type="button" class="btn-glass" style="padding:8px 12px;font-size:12px;" onclick="openMapLocation('محترف القط العسيري')">
+              <span>الموقع بالخريطة</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Merchant 4: Cloud Chalets -->
+      <article class="merchant-card" data-cat="stay">
+        <div class="merchant-thumb">
+          <img src="assets/adventure_hiking.jpg" alt="نزل وأكواخ مطل السحاب" loading="lazy" />
+          <div class="verified-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>إقامة ريفية مرخصة</span>
+          </div>
+        </div>
+        <div class="merchant-body">
+          <div>
+            <span class="merchant-category">نزل بيئية وأكواخ جبلية</span>
+            <h3 class="merchant-name">أكواخ مطل السحاب الريفية</h3>
+            <p class="merchant-desc">
+              أكواخ حجرية وخشبية بيئية تطل مباشرة على حافة بحر الغيوم في السودة. موقد حطب، إفطار عسيري بلدي طازج، وخصوصية تامة للعائلات.
+            </p>
+          </div>
+          <div class="merchant-meta-row">
+            <span>📍 السودة · مطل جرف ريدة</span>
+            <span>⭐ 4.8 (310 تقييم)</span>
+          </div>
+          <div class="merchant-actions">
+            <button type="button" class="btn-emerald" style="padding:8px 12px;font-size:12px;" onclick="openDirectMerchant('أكواخ مطل السحاب', '0550000004')">
+              <span>احجز الكوخ</span>
+            </button>
+            <button type="button" class="btn-glass" style="padding:8px 12px;font-size:12px;" onclick="openMapLocation('أكواخ مطل السحاب')">
+              <span>الموقع بالخريطة</span>
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= 6. INTERACTIVE AI TRIP PLANNER ================= -->
+  <section class="section-wrap" id="planner">
+    <div class="planner-card">
+      <span class="section-tag" style="color:var(--asir-gold);" id="txt-plan-tag">المخطط الذكي للرحلات</span>
+      <h2 class="section-title" id="txt-plan-title">صمّم جدول رحلتك المثالي في ثوانٍ</h2>
+      <p class="section-sub" style="max-width:680px;" id="txt-plan-sub">
+        اختر مدة إقامتك ونمطك المفضل، وسيقوم النظام الذكي ببناء مسار يومي متكامل يشمل المطاعم الشعبية (الحنيذ والمبثوثة)، المطلات السحابية، ومواعيد الفعاليات.
+      </p>
+
+      <!-- Selection Controls -->
+      <div class="planner-controls-grid">
+        <div class="planner-option-box selected" onclick="selectPlannerDuration('2days', this)">
+          <h4 id="dur-1-title">عطلة نهاية الأسبوع (يومان)</h4>
+          <p id="dur-1-desc">خطة مكثفة تجمع قمة السودة، وتناول الحنيذ التراثي، وجولة مسائية في ممشى الضباب وشارع الفن.</p>
+        </div>
+
+        <div class="planner-option-box" onclick="selectPlannerDuration('4days', this)">
+          <h4 id="dur-2-title">عطلة استكشافية (٤ أيام)</h4>
+          <p id="dur-2-desc">تشمل السودة ورجال ألمع، ومزارع البن الخولاني في تنومة، وتجربة هايكنج مع مبيت في نزل ريفي.</p>
+        </div>
+
+        <div class="planner-option-box" onclick="selectPlannerDuration('7days', this)">
+          <h4 id="dur-3-title">مغامرة عسير الكبرى (أسبوع كامل)</h4>
+          <p id="dur-3-desc">تغطية شاملة لكامل المنطقة من النماص شمالاً حتى الحبلة ورجال ألمع، مع زيارة الحرفيين ومزارع العسل.</p>
+        </div>
+      </div>
+
+      <!-- Generated Timeline Box -->
+      <div class="itinerary-output">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+          <div>
+            <div style="font-size:12px;color:var(--asir-gold);font-weight:700;" id="itinerary-meta">الجدول المقترح للرحلة:</div>
+            <h3 style="font-size:22px;color:#ffffff;margin-top:2px;" id="itinerary-name">جدول نهاية الأسبوع الساحر (يومان)</h3>
+          </div>
+          <button type="button" class="btn-emerald" onclick="downloadItinerary()" id="txt-btn-save-plan">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>حفظ ومشاركة المسار</span>
+          </button>
+        </div>
+
+        <div class="itinerary-timeline" id="timelineList">
+          <div class="timeline-step">
+            <div class="step-dot">١</div>
+            <div class="step-content">
+              <div class="step-time">صباح اليوم الأول · 09:00 ص</div>
+              <div class="step-title">الصعود إلى قمة السودة ومعانقة بحر الغيوم (3,015م)</div>
+              <p class="step-desc">استمتع بالنسيم العليل وإفطار عسيري شعبي (خبز ميفى مع عسل سدر بلدي ورضفة) في أحد المطلات السحابية، ثم خوض جولة في غابات العرعر.</p>
+            </div>
+          </div>
+
+          <div class="timeline-step">
+            <div class="step-dot">٢</div>
+            <div class="step-content">
+              <div class="step-time">ظهيرة اليوم الأول · 02:00 م</div>
+              <div class="step-title">غداء الحنيذ العسيري التراثي بأغصان المرخ</div>
+              <p class="step-desc">تجربة تذوق أشهر مأكولات عسير في مطاعم الحنيذ التاريخية بمدخل السودة أو طريق محايل.</p>
+            </div>
+          </div>
+
+          <div class="timeline-step">
+            <div class="step-dot">٣</div>
+            <div class="step-content">
+              <div class="step-time">مساء اليوم الثاني · 05:00 م</div>
+              <div class="step-title">زيارة قرية رجال ألمع التراثية وقصور الكوارتز</div>
+              <p class="step-desc">النزول عبر عقبة الصماء للاستمتاع بإضاءات رجال ألمع الليلية وزيارة متحف ألمع الدائم وتناول القهوة الخولانية.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 7. PARTNER ONBOARDING HERO BANNER ================= -->
+  <section class="section-wrap" id="partners">
+    <div class="partner-banner">
+      <div class="partner-text">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#d1fae5;" id="txt-part-tag">بوابة أصحاب المتاجر والمزارع</span>
+        <h3 id="txt-part-title">هل تملك متجراً، مزرعة بن، أو نُزلاً ريفياً في عسير؟</h3>
+        <p id="txt-part-desc">
+          انضم مجاناً إلى المنصة الرسمية للسياحة في عسير؛ واعرض خدماتك ومنتجاتك أمام آلاف السياح القادمين من داخل المملكة وخارجها، واحصل على "ختم جودة عسير المعتمد".
+        </p>
+      </div>
+
+      <button type="button" class="btn-partner-white" onclick="openPartnerModal()" id="txt-part-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+        <span>سجّل نشاطك الآن كشريك</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= 8. FOOTER ================= -->
+  <footer class="asir-footer">
+    <div class="footer-container">
+      <div>
+        <div style="font-size:16px;font-weight:800;color:#ffffff;margin-bottom:4px;">قمم عسير · Aseer Peaks</div>
+        <div>منصة رقمية مبنية وفق أعلى المعايير المعمارية لدعم سياحة عسير وتمكين المتاجر المحلية</div>
+      </div>
+      <div>
+        <span>تصميم وتطوير: أ. طارق ابوعشي · منطقة عسير، المملكة العربية السعودية</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= 9. NATIVE <DIALOG> BOOKING & REGISTRATION MODALS ================= -->
+  <!-- Modal 1: Booking Experience -->
+  <dialog class="asir-modal" id="bookingModal">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <h3 style="font-size:22px;font-weight:800;" id="modalBookingTitle">حجز تجربة سياحية</h3>
+      <button type="button" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;" onclick="document.getElementById('bookingModal').close()">✕</button>
+    </div>
+
+    <form onsubmit="event.preventDefault(); submitBooking();">
+      <div class="modal-form-group">
+        <label for="bookName">الاسم الكامل</label>
+        <input type="text" id="bookName" class="modal-input" required placeholder="مثال: محمد القحطاني" />
+      </div>
+      <div class="modal-form-group">
+        <label for="bookPhone">رقم الجوال (واتساب)</label>
+        <input type="tel" id="bookPhone" class="modal-input" required placeholder="05XXXXXXXX" />
+      </div>
+      <div class="modal-form-group">
+        <label for="bookGuests">عدد الزوار</label>
+        <input type="number" id="bookGuests" class="modal-input" min="1" max="20" value="2" />
+      </div>
+      <div class="modal-form-group">
+        <label for="bookDate">تاريخ الزيارة المفضل</label>
+        <input type="date" id="bookDate" class="modal-input" required />
+      </div>
+      <button type="submit" class="btn-emerald" style="width:100%;padding:14px;font-size:15px;margin-top:12px;">
+        تأكيد طلب الحجز المباشر
+      </button>
+    </form>
+  </dialog>
+
+  <!-- Modal 2: Merchant Partner Registration -->
+  <dialog class="asir-modal" id="partnerModal">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <div>
+        <h3 style="font-size:22px;font-weight:800;">تسجيل متجر / مزرعة كشريك سياحي</h3>
+        <p style="font-size:12px;color:var(--asir-gold);margin-top:2px;">الانضمام مجاني وبدون أي عمولة دعمًا لأبناء المنطقة</p>
+      </div>
+      <button type="button" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;" onclick="document.getElementById('partnerModal').close()">✕</button>
+    </div>
+
+    <form onsubmit="event.preventDefault(); submitPartner();">
+      <div class="modal-form-group">
+        <label for="partnerName">اسم المتجر / المزرعة / الفعالية</label>
+        <input type="text" id="partnerName" class="modal-input" required placeholder="مثال: مزرعة أعالي تنومة للبن" />
+      </div>
+      <div class="modal-form-group">
+        <label for="partnerCategory">تصنيف النشاط</label>
+        <select id="partnerCategory" class="modal-input" style="background:#0c1d18;">
+          <option>مزرعة بن خولاني أو فواكه</option>
+          <option>مناحل عسل جبلي حر</option>
+          <option>محترف فن القط العسيري أو حرف تراثية</option>
+          <option>نزل ريفي / أكواخ جبلية</option>
+          <option>مرشد هايكنج أو طيران شراعي معتمد</option>
+          <option>مقهى أو مطعم شعبي عسيري</option>
+        </select>
+      </div>
+      <div class="modal-form-group">
+        <label for="partnerLocation">الموقع الجغرافي في عسير</label>
+        <input type="text" id="partnerLocation" class="modal-input" required placeholder="مثال: رجال ألمع - وادي حسوة" />
+      </div>
+      <div class="modal-form-group">
+        <label for="partnerPhone">رقم الجوال والتواصل المباشر</label>
+        <input type="tel" id="partnerPhone" class="modal-input" required placeholder="05XXXXXXXX" />
+      </div>
+      <button type="submit" class="btn-emerald" style="width:100%;padding:14px;font-size:15px;margin-top:12px;">
+        إرسال طلب الانضمام واعتماد النشاط
+      </button>
+    </form>
+  </dialog>
+
+  <!-- JavaScript Interaction Logic -->
+  <script>
+    // --- 1. DESTINATIONS DATA & SWITCHER ---
+    const DESTINATIONS = {
+      soudah: {
+        img: 'assets/hero_asir_peaks.jpg',
+        badgeAltitude: 'الارتفاع: 3,015 متر',
+        badgeWeather: 'الأجواء: ضباب مستمر وبحر من الغيوم',
+        title: 'السودة — عاصمة الضباب والمغامرات',
+        desc: 'أعلى نقطة جغرافية في المملكة العربية السعودية. حيث تلتقي غابات العرعر الكثيفة بأمواج الضباب، مع تجارب تلفريك معلق يطل على الأخاديد السحيقة، ومسارات هايكنج تنتهي بمشاهد بانورامية تحبس الأنفاس.',
+        highlights: [
+          'تجربة ركوب التلفريك المعلق نحو وادي العوص ورجال ألمع',
+          'مسارات الهايكنج الجبلي برفقة مرشدين سياحيين محليين معتمدين',
+          'التخييم الفاخر وجلسات السحاب في مطلات السودة البانورامية'
+        ]
+      },
+      rijal: {
+        img: 'assets/rijal_almaa.jpg',
+        badgeAltitude: 'الارتفاع: 1,250 متر',
+        badgeWeather: 'الأجواء: دفء وادي ألمع وقلاع مضيئة ليلاً',
+        title: 'رجال ألمع — قلاع الكوارتز والتراث العالمي',
+        desc: 'القرية التراثية الأيقونية الحائزة على جائزة أفضل القرى السياحية في العالم من منظمة السياحة العالمية (UNWTO). قصور مشيدة من الحجر المحلي ومرصعة بأحجار الكوارتز البيضاء ونقوش القط العسيري الفاتنة.',
+        highlights: [
+          'جولة استكشافية داخل قصر ألمع وقصور العائلة التاريخية الستة عشر',
+          'زيارة ورش فن القَط العسيري ومقابلة الحرفيات الألمعيات',
+          'تذوق خبز الميفى الحار والعسل البلدي في المطاعم الشعبية بالموقع'
+        ]
+      },
+      tanomah: {
+        img: 'assets/coffee_honey_terrace.jpg',
+        badgeAltitude: 'الارتفاع: 2,400 متر',
+        badgeWeather: 'الأجواء: شلالات جارية ورذاذ عطر العرعر',
+        title: 'تنومة والنماص — مدرجات البن وشلالات الضباب',
+        desc: 'واحة الطبيعة البكر وسويسرا الجزيرة العربية؛ حيث تتعانق مدرجات زراعة البن الخولاني وأشجار اللوز والتين الشوكي، مع شلالات دهناء الشهيرة وغابات جبل منعاء وجبل شوعبان.',
+        highlights: [
+          'زيارة مزارع البن الخولاني المعتمدة وتجربة القطف والتحميص المباشر',
+          'استكشاف شلال دهناء الجاري وسط الصخور الجرانيتية المهيبة',
+          'زيارة قصر المقر التاريخي ومتاحف النماص التراثية'
+        ]
+      },
+      adventure: {
+        img: 'assets/adventure_hiking.jpg',
+        badgeAltitude: 'الارتفاع: مسارات بين 1,800م - 3,000م',
+        badgeWeather: 'الأجواء: مغامرة على حافة الجروف الشاهقة',
+        title: 'مسارات المغامرة، الهايكنج والطيران الشراعي',
+        desc: 'عسير هي موطن المغامرة الأول في الشرق الأوسط؛ جروف صخرية شاهقة، طيران شراعي فوق السحاب يمتد من قمم السودة حتى سهول تهامة، ومسارات هايكنج مصنفة عالمياً للمبتدئين والمحترفين.',
+        highlights: [
+          'القفز والتحليق بالطيران الشراعي (Paragliding) فوق بحر الغيوم',
+          'مسار عقبة القرون القديمة ومسار درب الجمالة التاريخي',
+          'التسلق الصخري على واجهات جبل منعاء الجرانيتية'
+        ]
+      }
+    };
+
+    function switchDest(key, btn) {
+      document.querySelectorAll('.dest-tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const data = DESTINATIONS[key];
+      if (!data) return;
+
+      const img = document.getElementById('destImg');
+      img.style.opacity = '0.4';
+      setTimeout(() => {
+        img.src = data.img;
+        img.style.opacity = '1';
+      }, 150);
+
+      document.getElementById('destBadge').innerHTML = `
+        <span style="font-weight:700;color:#10b981;">${data.badgeAltitude}</span>
+        <span>${data.badgeWeather}</span>
+      `;
+      document.getElementById('destTitle').textContent = data.title;
+      document.getElementById('destDesc').textContent = data.desc;
+
+      const hlList = document.getElementById('destHighlights');
+      hlList.innerHTML = data.highlights.map(h => `
+        <div class="dest-highlight-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>${h}</span>
+        </div>
+      `).join('');
+    }
+
+    // --- 2. MARKETPLACE FILTER ---
+    function filterMarket(cat, btn) {
+      document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.merchant-card');
+      cards.forEach(card => {
+        if (cat === 'all' || card.dataset.cat === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // --- 3. ITINERARY PLANNER GENERATOR ---
+    const ITINERARIES = {
+      '2days': {
+        name: 'جدول نهاية الأسبوع الساحر (يومان)',
+        meta: 'الجدول المقترح لعطلة نهاية الأسبوع في عسير:',
+        steps: [
+          { time: 'صباح اليوم الأول · 09:00 ص', title: 'الصعود إلى قمة السودة ومعانقة بحر الغيوم (3,015م)', desc: 'استمتع بالنسيم العليل وإفطار عسيري شعبي (خبز ميفى مع عسل سدر بلدي ورضفة) في أحد المطلات السحابية، ثم خوض جولة في غابات العرعر.' },
+          { time: 'ظهيرة اليوم الأول · 02:00 م', title: 'غداء الحنيذ العسيري التراثي بأغصان المرخ', desc: 'تجربة تذوق أشهر مأكولات عسير في مطاعم الحنيذ التاريخية بمدخل السودة أو طريق محايل مع الأرز البشاور والشاي المنعنع.' },
+          { time: 'مساء اليوم الثاني · 05:00 م', title: 'زيارة قرية رجال ألمع التراثية وقصور الكوارتز', desc: 'النزول عبر عقبة الصماء للاستمتاع بإضاءات رجال ألمع الليلية وزيارة متحف ألمع الدائم وتناول القهوة الخولانية وسط الوادي.' }
+        ]
+      },
+      '4days': {
+        name: 'رحلة استكشاف عسير المتكاملة (٤ أيام)',
+        meta: 'الجدول المقترح للرحلة الاستكشافية:',
+        steps: [
+          { time: 'اليوم الأول · أبها والسودة', title: 'ممشى الضباب، شارع الفن وقرية المفتاحة التشكيلية', desc: 'استكشاف معالم أبها البهية، التعرّف على فن القط العسيري، وركوب التلفريك نحو بحر الغيوم في السودة.' },
+          { time: 'اليوم الثاني · رجال ألمع', title: 'قصور الكوارتز، أودية النحل، وعسل المجرى الحر', desc: 'قضاء يوم كامل في رجال ألمع وتناول المأكولات التهامية الشعبية وزيارة مناحل السدر.' },
+          { time: 'اليوم الثالث · تنومة', title: 'شلال دهناء، جبل منعاء ومزارع البن الخولاني', desc: 'جولة وسط مزارع البن في مدرجات تنومة الخضراء، وتذوق القهوة الطازجة مباشرة من المزارعين.' },
+          { time: 'اليوم الرابع · النماص والظهارة', title: 'قصر المقر التاريخي وغابات العرعر الشاهقة', desc: 'زيارة قصور النماص، متحف التراث، والتسوق من سوق النماص الشعبي لاقتناء العسل والبهارات والمقتنيات اليدوية.' }
+        ]
+      },
+      '7days': {
+        name: 'مغامرة عسير الكبرى الشاملة (أسبوع كامل)',
+        meta: 'البرنامج السياحي الشامل لمنطقة عسير:',
+        steps: [
+          { time: 'الأيام ١ - ٢ · العاصمة أبها وقمم السودة', title: 'أبها الحضرية، قمم السودة ورياضة الطيران الشراعي', desc: 'المبيت في أكواخ السحاب، الطيران الشراعي فوق الأودية، وزيارة مطلات السد وقرية حبلة المعلقة.' },
+          { time: 'الأيام ٣ - ٤ · رجال ألمع وأودية تهامة عسير', title: 'سياحة التراث الإنساني ومزارع العسل والأودية الخضراء', desc: 'جولات مع أصحاب المناحل المحلية، ورش عمل فن القط، والإقامة في دور الضيافة التراثية المرممة.' },
+          { time: 'الأيام ٥ - ٧ · تنومة، النماص وبلقرن', title: 'مغامرات الهايكنج، شلالات المياه ومزارع البن والمدرجات', desc: 'تسلق صخور جبل منعاء، رحلات المشي الجبلي الطويلة، وزيارة مزارع البن والرمان والتين والتخييم البري.' }
+        ]
+      }
+    };
+
+    function selectPlannerDuration(key, box) {
+      document.querySelectorAll('.planner-option-box').forEach(b => b.classList.remove('selected'));
+      if (box) box.classList.add('selected');
+
+      const plan = ITINERARIES[key];
+      if (!plan) return;
+
+      document.getElementById('itinerary-name').textContent = plan.name;
+      document.getElementById('itinerary-meta').textContent = plan.meta;
+
+      const tList = document.getElementById('timelineList');
+      tList.innerHTML = plan.steps.map((s, idx) => `
+        <div class="timeline-step">
+          <div class="step-dot">${idx + 1}</div>
+          <div class="step-content">
+            <div class="step-time">${s.time}</div>
+            <div class="step-title">${s.title}</div>
+            <p class="step-desc">${s.desc}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // --- 4. MODALS & INTERACTIONS ---
+    function openBookingModal(title) {
+      document.getElementById('modalBookingTitle').textContent = `حجز: ${title}`;
+      document.getElementById('bookingModal').showModal();
+    }
+
+    function openPartnerModal() {
+      document.getElementById('partnerModal').showModal();
+    }
+
+    function openDirectMerchant(name, phone) {
+      alert(`سيتم فتح محادثة واتساب المباشرة مع صاحب النشاط:\n${name}\nرقم التواصل: ${phone}`);
+    }
+
+    function openMapLocation(name) {
+      alert(`سيتم فتح إحداثيات الموقع الدقيق على خرائط جوجل لـ: ${name}`);
+    }
+
+    function submitBooking() {
+      alert('تم استلام طلب حجزك بنجاح! سيتواصل معك المرشد / ممثل التجربة عبر الواتساب لتأكيد الموعد وإرسال الموقع الدقيق.');
+      document.getElementById('bookingModal').close();
+    }
+
+    function submitPartner() {
+      alert('تهانينا! تم تسجيل طلب انضمام نشاطك بنجاح في منصة قمم عسير. سيتواصل معك فريق الدعم خلال ٢٤ ساعة لتفعيل صفحتك ومنحك "ختم جودة عسير المعتمد".');
+      document.getElementById('partnerModal').close();
+    }
+
+    function downloadItinerary() {
+      alert('تم تجهيز مسار الرحلة! يمكنك حفظه ومشاركته مع رفقاء السفر عبر الرابط أو بصيغة PDF.');
+    }
+
+    function triggerSearch() {
+      const dest = document.getElementById('sel-dest').value;
+      if (dest === 'soudah') switchDest('soudah', document.getElementById('tab-soudah'));
+      else if (dest === 'rijal') switchDest('rijal', document.getElementById('tab-rijal'));
+      else if (dest === 'tanomah') switchDest('tanomah', document.getElementById('tab-tanomah'));
+      document.getElementById('destinations').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // --- 5. BILINGUAL ARABIC / ENGLISH SWITCHER ---
+    let isEnglish = false;
+    function toggleLanguage() {
+      isEnglish = !isEnglish;
+      const html = document.documentElement;
+      html.lang = isEnglish ? 'en' : 'ar';
+      html.dir = isEnglish ? 'ltr' : 'rtl';
+
+      document.getElementById('txt-lang-toggle').textContent = isEnglish ? 'العربية' : 'English';
+      document.getElementById('txt-brand-name').textContent = isEnglish ? 'Aseer Peaks' : 'قمم عسير';
+      document.getElementById('txt-brand-sub').textContent = isEnglish ? 'TOURISM & MERCHANT ECOSYSTEM' : 'ASEER PEAKS';
+
+      document.getElementById('txt-nav-dest').textContent = isEnglish ? 'Destinations' : 'الوجهات الأيقونية';
+      document.getElementById('txt-nav-market').textContent = isEnglish ? 'Local Marketplace' : 'سوق المزارع والمتاجر';
+      document.getElementById('txt-nav-plan').textContent = isEnglish ? 'AI Trip Planner' : 'مخطط الرحلات الذكي';
+      document.getElementById('txt-nav-partner').textContent = isEnglish ? 'Merchant Portal' : 'بوابة التجار والمزارع';
+
+      document.getElementById('txt-btn-add-store').querySelector('span').textContent = isEnglish ? 'Register Store' : 'سجّل متجرك';
+      document.getElementById('txt-btn-plan-trip').querySelector('span').textContent = isEnglish ? 'Plan Your Trip' : 'خطّط لرحلتك';
+
+      document.getElementById('txt-hero-pill').textContent = isEnglish ? 'Cloud & Mist Season in Asir Peaks 2026' : 'موسم السحاب والمطر في قمم عسير ٢٠٢٦';
+      document.getElementById('txt-hero-h1').innerHTML = isEnglish ? 'Above the Clouds,<br>Your Story in Asir Begins' : 'فوق السحاب،<br>تبدأ حكايتك في عسير';
+      document.getElementById('txt-hero-p').textContent = isEnglish
+        ? 'The integrated smart ecosystem to explore Saudi Arabia’s highest peaks, support local coffee and honey farms, and book unforgettable mountain adventures.'
+        : 'المنصة الذكية المتكاملة لاستكشاف أعلى قمم المملكة، دعم مزارع البن ومناحل العسل العسيرية الأصيلة، وحجز خيرة التجارب والمغامرات السياحية.';
+
+      document.getElementById('lbl-dest').textContent = isEnglish ? 'Destination' : 'الوجهة المستهدفة';
+      document.getElementById('lbl-type').textContent = isEnglish ? 'Experience Type' : 'نوع النشاط أو المنتج';
+      document.getElementById('lbl-date').textContent = isEnglish ? 'Travel Window' : 'موعد الزيارة';
+      document.getElementById('txt-search-btn').querySelector('span').textContent = isEnglish ? 'Explore Asir' : 'استكشف عسير';
+    }
+  </script>
+</body>
+</html>
