@@ -1003,7 +1003,7 @@
 
   <!-- ================= 1. LIVE TELEMETRY WEATHER TICKER ================= -->
   <aside class="telemetry-ticker" aria-label="Asir Live Weather and Telemetry">
-    <div class="ticker-inner">
+    <div class="ticker-inner" id="tickerInner">
       <div class="ticker-item">
         <span class="ticker-badge">السودة 3,015م</span>
         <span>درجة الحرارة: <strong>17°C</strong></span>
@@ -1457,11 +1457,11 @@
   <footer class="asir-footer">
     <div class="footer-container">
       <div>
-        <div style="font-size:16px;font-weight:800;color:#ffffff;margin-bottom:4px;">قمم عسير · Aseer Peaks</div>
-        <div>منصة رقمية مبنية وفق أعلى المعايير المعمارية لدعم سياحة عسير وتمكين المتاجر المحلية</div>
+        <div style="font-size:16px;font-weight:800;color:#ffffff;margin-bottom:4px;" id="txt-footer-brand">قمم عسير · Aseer Peaks</div>
+        <div id="txt-footer-sub">منصة رقمية مبنية وفق أعلى المعايير المعمارية لدعم سياحة عسير وتمكين المتاجر المحلية</div>
       </div>
       <div>
-        <span>تصميم وتطوير: أ. طارق ابوعشي · منطقة عسير، المملكة العربية السعودية</span>
+        <span id="txt-footer-credit">تصميم وتطوير: أ. طارق ابوعشي · منطقة عسير، المملكة العربية السعودية</span>
       </div>
     </div>
   </footer>
@@ -1476,22 +1476,22 @@
 
     <form onsubmit="event.preventDefault(); submitBooking();">
       <div class="modal-form-group">
-        <label for="bookName">الاسم الكامل</label>
+        <label for="bookName" id="lbl-book-name">الاسم الكامل</label>
         <input type="text" id="bookName" class="modal-input" required placeholder="مثال: محمد القحطاني" />
       </div>
       <div class="modal-form-group">
-        <label for="bookPhone">رقم الجوال (واتساب)</label>
+        <label for="bookPhone" id="lbl-book-phone">رقم الجوال (واتساب)</label>
         <input type="tel" id="bookPhone" class="modal-input" required placeholder="05XXXXXXXX" />
       </div>
       <div class="modal-form-group">
-        <label for="bookGuests">عدد الزوار</label>
+        <label for="bookGuests" id="lbl-book-guests">عدد الزوار</label>
         <input type="number" id="bookGuests" class="modal-input" min="1" max="20" value="2" />
       </div>
       <div class="modal-form-group">
-        <label for="bookDate">تاريخ الزيارة المفضل</label>
+        <label for="bookDate" id="lbl-book-date">تاريخ الزيارة المفضل</label>
         <input type="date" id="bookDate" class="modal-input" required />
       </div>
-      <button type="submit" class="btn-emerald" style="width:100%;padding:14px;font-size:15px;margin-top:12px;">
+      <button type="submit" class="btn-emerald" id="btn-book-submit" style="width:100%;padding:14px;font-size:15px;margin-top:12px;">
         تأكيد طلب الحجز المباشر
       </button>
     </form>
@@ -1501,19 +1501,19 @@
   <dialog class="asir-modal" id="partnerModal">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
       <div>
-        <h3 style="font-size:22px;font-weight:800;">تسجيل متجر / مزرعة كشريك سياحي</h3>
-        <p style="font-size:12px;color:var(--asir-gold);margin-top:2px;">الانضمام مجاني وبدون أي عمولة دعمًا لأبناء المنطقة</p>
+        <h3 style="font-size:22px;font-weight:800;" id="modalPartnerTitle">تسجيل متجر / مزرعة كشريك سياحي</h3>
+        <p style="font-size:12px;color:var(--asir-gold);margin-top:2px;" id="modalPartnerSub">الانضمام مجاني وبدون أي عمولة دعمًا لأبناء المنطقة</p>
       </div>
       <button type="button" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;" onclick="document.getElementById('partnerModal').close()">✕</button>
     </div>
 
     <form onsubmit="event.preventDefault(); submitPartner();">
       <div class="modal-form-group">
-        <label for="partnerName">اسم المتجر / المزرعة / الفعالية</label>
+        <label for="partnerName" id="lbl-partner-name">اسم المتجر / المزرعة / الفعالية</label>
         <input type="text" id="partnerName" class="modal-input" required placeholder="مثال: مزرعة أعالي تنومة للبن" />
       </div>
       <div class="modal-form-group">
-        <label for="partnerCategory">تصنيف النشاط</label>
+        <label for="partnerCategory" id="lbl-partner-category">تصنيف النشاط</label>
         <select id="partnerCategory" class="modal-input" style="background:#0c1d18;">
           <option>مزرعة بن خولاني أو فواكه</option>
           <option>مناحل عسل جبلي حر</option>
@@ -1524,14 +1524,14 @@
         </select>
       </div>
       <div class="modal-form-group">
-        <label for="partnerLocation">الموقع الجغرافي في عسير</label>
+        <label for="partnerLocation" id="lbl-partner-location">الموقع الجغرافي في عسير</label>
         <input type="text" id="partnerLocation" class="modal-input" required placeholder="مثال: رجال ألمع - وادي حسوة" />
       </div>
       <div class="modal-form-group">
-        <label for="partnerPhone">رقم الجوال والتواصل المباشر</label>
+        <label for="partnerPhone" id="lbl-partner-phone">رقم الجوال والتواصل المباشر</label>
         <input type="tel" id="partnerPhone" class="modal-input" required placeholder="05XXXXXXXX" />
       </div>
-      <button type="submit" class="btn-emerald" style="width:100%;padding:14px;font-size:15px;margin-top:12px;">
+      <button type="submit" class="btn-emerald" id="btn-partner-submit" style="width:100%;padding:14px;font-size:15px;margin-top:12px;">
         إرسال طلب الانضمام واعتماد النشاط
       </button>
     </form>
@@ -1539,161 +1539,777 @@
 
   <!-- JavaScript Interaction Logic -->
   <script>
-    // --- 1. DESTINATIONS DATA & SWITCHER ---
+    // =========================================================================
+    // COMPLETE BILINGUAL DATASETS & I18N DICTIONARIES
+    // =========================================================================
+
+    let isEnglish = false;
+    let currentDest = 'soudah';
+    let currentMarketCat = 'all';
+    let currentPlan = '2days';
+
+    // --- 1. LIVE TELEMETRY TICKER DATA ---
+    const TICKER_DATA = {
+      ar: [
+        { badge: 'السودة 3,015م', temp: 'درجة الحرارة: 17°C', info: '• ضباب كثيف ومعانقة السحاب 98%' },
+        { badge: 'أبها البهية 2,270م', temp: 'درجة الحرارة: 21°C', info: '• نسيم جبلي عليل وممشى الضباب مفتوح' },
+        { badge: 'رجال ألمع 1,250م', temp: 'درجة الحرارة: 25°C', info: '• أجواء دافئة وقلاع التراث العالمي جاهزة لاستقبال الزوار' },
+        { badge: 'تنومة والنماص 2,400م', temp: 'درجة الحرارة: 19°C', info: '• شلالات دهناء ومزارع البن الخولاني والعسل' }
+      ],
+      en: [
+        { badge: 'Al-Soudah 3,015m', temp: 'Temp: 17°C', info: '• Dense mist & 98% cloud sea coverage' },
+        { badge: 'Abha Highland 2,270m', temp: 'Temp: 21°C', info: '• Alpine breeze & Fog Walkway open' },
+        { badge: 'Rijal Almaa 1,250m', temp: 'Temp: 25°C', info: '• Warm Tihami climate & UNESCO palaces open' },
+        { badge: 'Tanomah & Al-Namas 2,400m', temp: 'Temp: 19°C', info: '• Dahna waterfalls & Khawlani coffee terraces active' }
+      ]
+    };
+
+    function renderTicker() {
+      const items = TICKER_DATA[isEnglish ? 'en' : 'ar'];
+      const list = [...items, ...items];
+      const ticker = document.getElementById('tickerInner');
+      if (ticker) {
+        ticker.innerHTML = list.map(item => `
+          <div class="ticker-item">
+            <span class="ticker-badge">${item.badge}</span>
+            <span>${item.temp}</span>
+            <span>${item.info}</span>
+          </div>
+        `).join('');
+      }
+    }
+
+    // --- 2. DESTINATIONS DATA & SWITCHER ---
     const DESTINATIONS = {
       soudah: {
         img: 'assets/hero_asir_peaks.jpg',
-        badgeAltitude: 'الارتفاع: 3,015 متر',
-        badgeWeather: 'الأجواء: ضباب مستمر وبحر من الغيوم',
-        title: 'السودة — عاصمة الضباب والمغامرات',
-        desc: 'أعلى نقطة جغرافية في المملكة العربية السعودية. حيث تلتقي غابات العرعر الكثيفة بأمواج الضباب، مع تجارب تلفريك معلق يطل على الأخاديد السحيقة، ومسارات هايكنج تنتهي بمشاهد بانورامية تحبس الأنفاس.',
-        highlights: [
-          'تجربة ركوب التلفريك المعلق نحو وادي العوص ورجال ألمع',
-          'مسارات الهايكنج الجبلي برفقة مرشدين سياحيين محليين معتمدين',
-          'التخييم الفاخر وجلسات السحاب في مطلات السودة البانورامية'
-        ]
+        ar: {
+          tab: 'السودة وأعالي السروات (3,015م)',
+          badgeAltitude: 'الارتفاع: 3,015 متر',
+          badgeWeather: 'الأجواء: ضباب مستمر وبحر من الغيوم',
+          title: 'السودة — عاصمة الضباب والمغامرات',
+          desc: 'أعلى نقطة جغرافية في المملكة العربية السعودية. حيث تلتقي غابات العرعر الكثيفة بأمواج الضباب، مع تجارب تلفريك معلق يطل على الأخاديد السحيقة، ومسارات هايكنج تنتهي بمشاهد بانورامية تحبس الأنفاس.',
+          highlights: [
+            'تجربة ركوب التلفريك المعلق نحو وادي العوص ورجال ألمع',
+            'مسارات الهايكنج الجبلي برفقة مرشدين سياحيين محليين معتمدين',
+            'التخييم الفاخر وجلسات السحاب في مطلات السودة البانورامية'
+          ],
+          bookExp: 'السودة — قمة المملكة'
+        },
+        en: {
+          tab: 'Al-Soudah & High Sarawat (3,015m)',
+          badgeAltitude: 'Altitude: 3,015 meters',
+          badgeWeather: 'Conditions: Continuous mist & rolling sea of clouds',
+          title: 'Al-Soudah — Capital of Fog & Alpine Adventure',
+          desc: 'The highest geographical elevation in Saudi Arabia, where dense juniper forests meet cascading cloud oceans. Featuring panoramic cable cars over dramatic canyons and cliff-edge hiking trails with breathtaking vistas.',
+          highlights: [
+            'Scenic cable car descent toward Al-Aws Valley & Rijal Almaa',
+            'Mountain hiking trails led by certified local Asiri guides',
+            'Luxury cliffside cloud camping & sunrise viewpoint lounges'
+          ],
+          bookExp: 'Al-Soudah — Crown of the Kingdom'
+        }
       },
       rijal: {
         img: 'assets/rijal_almaa.jpg',
-        badgeAltitude: 'الارتفاع: 1,250 متر',
-        badgeWeather: 'الأجواء: دفء وادي ألمع وقلاع مضيئة ليلاً',
-        title: 'رجال ألمع — قلاع الكوارتز والتراث العالمي',
-        desc: 'القرية التراثية الأيقونية الحائزة على جائزة أفضل القرى السياحية في العالم من منظمة السياحة العالمية (UNWTO). قصور مشيدة من الحجر المحلي ومرصعة بأحجار الكوارتز البيضاء ونقوش القط العسيري الفاتنة.',
-        highlights: [
-          'جولة استكشافية داخل قصر ألمع وقصور العائلة التاريخية الستة عشر',
-          'زيارة ورش فن القَط العسيري ومقابلة الحرفيات الألمعيات',
-          'تذوق خبز الميفى الحار والعسل البلدي في المطاعم الشعبية بالموقع'
-        ]
+        ar: {
+          tab: 'رجال ألمع وقلاع الكوارتز',
+          badgeAltitude: 'الارتفاع: 1,250 متر',
+          badgeWeather: 'الأجواء: دفء وادي ألمع وقلاع مضيئة ليلاً',
+          title: 'رجال ألمع — قلاع الكوارتز والتراث العالمي',
+          desc: 'القرية التراثية الأيقونية الحائزة على جائزة أفضل القرى السياحية في العالم من منظمة السياحة العالمية (UNWTO). قصور مشيدة من الحجر المحلي ومرصعة بأحجار الكوارتز البيضاء ونقوش القط العسيري الفاتنة.',
+          highlights: [
+            'جولة استكشافية داخل قصر ألمع وقصور العائلة التاريخية الستة عشر',
+            'زيارة ورش فن القَط العسيري ومقابلة الحرفيات الألمعيات',
+            'تذوق خبز الميفى الحار والعسل البلدي في المطاعم الشعبية بالموقع'
+          ],
+          bookExp: 'رجال ألمع — التراث العالمي'
+        },
+        en: {
+          tab: 'Rijal Almaa & Quartz Palaces',
+          badgeAltitude: 'Altitude: 1,250 meters',
+          badgeWeather: 'Conditions: Warm Tihama breeze & illuminated palaces',
+          title: 'Rijal Almaa — Ancient Quartz Palaces & World Heritage',
+          desc: 'The iconic heritage village recognized by the UNWTO as one of the Best Tourism Villages in the World. Multi-story stone fortresses inlaid with white quartz crystals and adorned with UNESCO-recognized Al-Qatt Al-Asiri murals.',
+          highlights: [
+            'Guided discovery of the grand Almaa Palace & 16 historic towers',
+            'Al-Qatt Al-Asiri art workshops with local master artisan women',
+            'Traditional fresh Meefa bread & raw Sidr honey culinary tastings'
+          ],
+          bookExp: 'Rijal Almaa — World Heritage Village'
+        }
       },
       tanomah: {
         img: 'assets/coffee_honey_terrace.jpg',
-        badgeAltitude: 'الارتفاع: 2,400 متر',
-        badgeWeather: 'الأجواء: شلالات جارية ورذاذ عطر العرعر',
-        title: 'تنومة والنماص — مدرجات البن وشلالات الضباب',
-        desc: 'واحة الطبيعة البكر وسويسرا الجزيرة العربية؛ حيث تتعانق مدرجات زراعة البن الخولاني وأشجار اللوز والتين الشوكي، مع شلالات دهناء الشهيرة وغابات جبل منعاء وجبل شوعبان.',
-        highlights: [
-          'زيارة مزارع البن الخولاني المعتمدة وتجربة القطف والتحميص المباشر',
-          'استكشاف شلال دهناء الجاري وسط الصخور الجرانيتية المهيبة',
-          'زيارة قصر المقر التاريخي ومتاحف النماص التراثية'
-        ]
+        ar: {
+          tab: 'مزارع البن وشلالات تنومة',
+          badgeAltitude: 'الارتفاع: 2,400 متر',
+          badgeWeather: 'الأجواء: شلالات جارية ورذاذ عطر العرعر',
+          title: 'تنومة والنماص — مدرجات البن وشلالات الضباب',
+          desc: 'واحة الطبيعة البكر وسويسرا الجزيرة العربية؛ حيث تتعانق مدرجات زراعة البن الخولاني وأشجار اللوز والتين الشوكي، مع شلالات دهناء الشهيرة وغابات جبل منعاء وجبل شوعبان.',
+          highlights: [
+            'زيارة مزارع البن الخولاني المعتمدة وتجربة القطف والتحميص المباشر',
+            'استكشاف شلال دهناء الجاري وسط الصخور الجرانيتية المهيبة',
+            'زيارة قصر المقر التاريخي ومتاحف النماص التراثية'
+          ],
+          bookExp: 'تنومة والنماص — مدرجات البن'
+        },
+        en: {
+          tab: 'Tanomah Coffee & Waterfalls',
+          badgeAltitude: 'Altitude: 2,400 meters',
+          badgeWeather: 'Conditions: Cascading waterfalls & crisp mountain air',
+          title: 'Tanomah & Al-Namas — Coffee Terraces & Cascading Falls',
+          desc: 'A pristine alpine sanctuary known as the green crown of Asir. Ancient stone agricultural terraces cultivate prized Saudi Khawlani specialty coffee alongside roaring waterfalls like Dahna and granite crags of Mount Manaa.',
+          highlights: [
+            'Farm tours through heirloom Khawlani coffee terraces & live roasting',
+            'Hike to cascading Dahna waterfalls surrounded by granite bluffs',
+            'Exploration of historic Al-Muqar Palace and Al-Namas museums'
+          ],
+          bookExp: 'Tanomah & Al-Namas — Coffee & Nature'
+        }
       },
       adventure: {
         img: 'assets/adventure_hiking.jpg',
-        badgeAltitude: 'الارتفاع: مسارات بين 1,800م - 3,000م',
-        badgeWeather: 'الأجواء: مغامرة على حافة الجروف الشاهقة',
-        title: 'مسارات المغامرة، الهايكنج والطيران الشراعي',
-        desc: 'عسير هي موطن المغامرة الأول في الشرق الأوسط؛ جروف صخرية شاهقة، طيران شراعي فوق السحاب يمتد من قمم السودة حتى سهول تهامة، ومسارات هايكنج مصنفة عالمياً للمبتدئين والمحترفين.',
-        highlights: [
-          'القفز والتحليق بالطيران الشراعي (Paragliding) فوق بحر الغيوم',
-          'مسار عقبة القرون القديمة ومسار درب الجمالة التاريخي',
-          'التسلق الصخري على واجهات جبل منعاء الجرانيتية'
-        ]
+        ar: {
+          tab: 'مسارات المغامرة والهايكنج',
+          badgeAltitude: 'الارتفاع: مسارات بين 1,800م - 3,000م',
+          badgeWeather: 'الأجواء: مغامرة على حافة الجروف الشاهقة',
+          title: 'مسارات المغامرة، الهايكنج والطيران الشراعي',
+          desc: 'عسير هي موطن المغامرة الأول في الشرق الأوسط؛ جروف صخرية شاهقة، طيران شراعي فوق السحاب يمتد من قمم السودة حتى سهول تهامة، ومسارات هايكنج مصنفة عالمياً للمبتدئين والمحترفين.',
+          highlights: [
+            'القفز والتحليق بالطيران الشراعي (Paragliding) فوق بحر الغيوم',
+            'مسار عقبة القرون القديمة ومسار درب الجمالة التاريخي',
+            'التسلق الصخري على واجهات جبل منعاء الجرانيتية'
+          ],
+          bookExp: 'مغامرات عسير الجبلية'
+        },
+        en: {
+          tab: 'Adventure & Hiking Trails',
+          badgeAltitude: 'Altitude: 1,800m – 3,000m trails',
+          badgeWeather: 'Conditions: Thrilling edge adventures above the mist',
+          title: 'Adventure Trails, Mountain Hiking & Paragliding',
+          desc: 'Asir is the premier outdoor adventure playground in the Middle East: soaring cliffside launches for cloud paragliding from Al-Soudah to the Tihama lowlands, and world-class trail networks for both hikers and climbers.',
+          highlights: [
+            'Tandem paragliding glides soaring high over the sea of clouds',
+            'Historic Akabat Al-Quroon & Camels ancient trading trail hikes',
+            'Sport rock climbing on the monolithic granite faces of Mount Manaa'
+          ],
+          bookExp: 'Asir Mountain Adventures'
+        }
       }
     };
 
     function switchDest(key, btn) {
+      currentDest = key;
       document.querySelectorAll('.dest-tab-btn').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
+      const activeBtn = btn || document.getElementById(`tab-${key}`);
+      if (activeBtn) activeBtn.classList.add('active');
 
       const data = DESTINATIONS[key];
       if (!data) return;
+      const content = isEnglish ? data.en : data.ar;
 
       const img = document.getElementById('destImg');
-      img.style.opacity = '0.4';
-      setTimeout(() => {
-        img.src = data.img;
-        img.style.opacity = '1';
-      }, 150);
+      if (img) {
+        img.style.opacity = '0.4';
+        setTimeout(() => {
+          img.src = data.img;
+          img.style.opacity = '1';
+        }, 150);
+      }
 
-      document.getElementById('destBadge').innerHTML = `
-        <span style="font-weight:700;color:#10b981;">${data.badgeAltitude}</span>
-        <span>${data.badgeWeather}</span>
-      `;
-      document.getElementById('destTitle').textContent = data.title;
-      document.getElementById('destDesc').textContent = data.desc;
+      const badge = document.getElementById('destBadge');
+      if (badge) {
+        badge.innerHTML = `
+          <span style="font-weight:700;color:#10b981;">${content.badgeAltitude}</span>
+          <span>${content.badgeWeather}</span>
+        `;
+      }
+      document.getElementById('destTitle').textContent = content.title;
+      document.getElementById('destDesc').textContent = content.desc;
 
       const hlList = document.getElementById('destHighlights');
-      hlList.innerHTML = data.highlights.map(h => `
-        <div class="dest-highlight-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>${h}</span>
-        </div>
-      `).join('');
+      if (hlList) {
+        hlList.innerHTML = content.highlights.map(h => `
+          <div class="dest-highlight-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>${h}</span>
+          </div>
+        `).join('');
+      }
+
+      const bookBtn = document.getElementById('txt-book-exp');
+      if (bookBtn) {
+        bookBtn.setAttribute('onclick', `openBookingModal('${content.bookExp}')`);
+      }
     }
 
-    // --- 2. MARKETPLACE FILTER ---
+    // --- 3. MARKETPLACE DATA & RENDERER ---
+    const MERCHANTS_DATA = [
+      {
+        id: 1,
+        cat: 'coffee',
+        img: 'assets/coffee_honey_terrace.jpg',
+        filter: 'none',
+        ar: {
+          badge: 'ختم جودة عسير',
+          category: 'مزرعة بن مختص ومقهى ريفي',
+          name: 'مزرعة قمم البن الخولاني',
+          desc: 'بن خولاني سعودي فاخر من مدرجات جبال تنومة على ارتفاع 2,200م. نوفر جلسات تذوق القهوة وتجربة جني الثمار بين المزارع العتيقة.',
+          location: '📍 تنومة · جبال منعاء',
+          rating: '⭐ 4.9 (184 تقييم)',
+          btnWhatsapp: 'تواصل واتساب',
+          btnMap: 'الموقع بالخريطة'
+        },
+        en: {
+          badge: 'Verified Asir Quality',
+          category: 'Specialty Coffee Farm & Mountain Café',
+          name: 'Peaks Khawlani Coffee Estate',
+          desc: 'Heirloom Saudi Khawlani specialty coffee harvested from Tanomah mountain terraces at 2,200m altitude. Offering farm tastings, picking tours, and whole bean sales.',
+          location: '📍 Tanomah · Mount Manaa',
+          rating: '⭐ 4.9 (184 reviews)',
+          btnWhatsapp: 'Direct WhatsApp',
+          btnMap: 'Google Maps'
+        },
+        phone: '0550000001'
+      },
+      {
+        id: 2,
+        cat: 'honey',
+        img: 'assets/coffee_honey_terrace.jpg',
+        filter: 'hue-rotate(25deg)',
+        ar: {
+          badge: 'عسل جبلي مفحوص',
+          category: 'مناحل ومحاصيل جبلية',
+          name: 'مناحل عسل السدر والمجرى الألمعي',
+          desc: 'عسل سدر بلدي ومجرى أبيض نادر من أشجار السدر المعمرة في أودية رجال ألمع. مفحوص مخبرياً بنسبة نقاء 100% مع شحن لجميع المناطق.',
+          location: '📍 رجال ألمع · وادي العوص',
+          rating: '⭐ 5.0 (215 تقييم)',
+          btnWhatsapp: 'تواصل واتساب',
+          btnMap: 'الموقع بالخريطة'
+        },
+        en: {
+          badge: 'Lab-Tested Mountain Honey',
+          category: 'Wild Mountain Apiary & Bee Farm',
+          name: 'Al-Alma’i Sidr & White Majra Honey Apiaries',
+          desc: 'Pure wild mountain Sidr and rare crystallized white Majra honey harvested from ancient Sidr trees in the valleys of Rijal Almaa. 100% lab tested and certified.',
+          location: '📍 Rijal Almaa · Al-Aws Valley',
+          rating: '⭐ 5.0 (215 reviews)',
+          btnWhatsapp: 'Direct WhatsApp',
+          btnMap: 'Google Maps'
+        },
+        phone: '0550000002'
+      },
+      {
+        id: 3,
+        cat: 'qatt',
+        img: 'assets/rijal_almaa.jpg',
+        filter: 'none',
+        ar: {
+          badge: 'تراث يونيسكو معتمد',
+          category: 'حرف يدوية وفنون جدارية',
+          name: 'محترف القط العسيري الأصيل',
+          desc: 'مقتنيات فنية، لوحات جدارية، وأوشحة مرسومة بأنامل فنانات عسير المحترفات وفق رموز فن القَط العسيري المسجل بقائمة التراث الإنساني.',
+          location: '📍 أبها · قرية المفتاحة التشكيلية',
+          rating: '⭐ 4.9 (98 تقييم)',
+          btnWhatsapp: 'تواصل واتساب',
+          btnMap: 'الموقع بالخريطة'
+        },
+        en: {
+          badge: 'UNESCO Heritage Certified',
+          category: 'Handcrafted Art & Wall Murals',
+          name: 'Authentic Al-Qatt Al-Asiri Art Studio',
+          desc: 'Exquisite authentic art pieces, murals, and woven textiles hand-painted by master Asiri women artisans preserving UNESCO-inscribed geometric heritage motifs.',
+          location: '📍 Abha · Al-Muftaha Art Village',
+          rating: '⭐ 4.9 (98 reviews)',
+          btnWhatsapp: 'Direct WhatsApp',
+          btnMap: 'Google Maps'
+        },
+        phone: '0550000003'
+      },
+      {
+        id: 4,
+        cat: 'stay',
+        img: 'assets/adventure_hiking.jpg',
+        filter: 'none',
+        ar: {
+          badge: 'إقامة ريفية مرخصة',
+          category: 'نزل بيئية وأكواخ جبلية',
+          name: 'أكواخ مطل السحاب الريفية',
+          desc: 'أكواخ حجرية وخشبية بيئية تطل مباشرة على حافة بحر الغيوم في السودة. موقد حطب، إفطار عسيري بلدي طازج، وخصوصية تامة للعائلات.',
+          location: '📍 السودة · مطل جرف ريدة',
+          rating: '⭐ 4.8 (310 تقييم)',
+          btnWhatsapp: 'احجز الكوخ',
+          btnMap: 'الموقع بالخريطة'
+        },
+        en: {
+          badge: 'Licensed Eco-Lodge',
+          category: 'Eco-Chalet & Cloud Cabins',
+          name: 'Cloud View Eco-Cabins & Chalets',
+          desc: 'Hand-crafted stone and wood chalets perched right on the rim of Al-Soudah overlooking a sea of clouds. Features cozy wood fireplaces and traditional farm breakfasts.',
+          location: '📍 Al-Soudah · Raydah Escarpment',
+          rating: '⭐ 4.8 (310 reviews)',
+          btnWhatsapp: 'Book Chalet',
+          btnMap: 'Google Maps'
+        },
+        phone: '0550000004'
+      }
+    ];
+
+    function renderMerchants() {
+      const lang = isEnglish ? 'en' : 'ar';
+      const grid = document.getElementById('merchantsGrid');
+      if (!grid) return;
+      grid.innerHTML = MERCHANTS_DATA.map(m => {
+        const d = m[lang];
+        const isVisible = (currentMarketCat === 'all' || m.cat === currentMarketCat);
+        return `
+          <article class="merchant-card" data-cat="${m.cat}" style="display: ${isVisible ? 'flex' : 'none'};">
+            <div class="merchant-thumb">
+              <img src="${m.img}" alt="${d.name}" style="${m.filter !== 'none' ? 'filter:'+m.filter+';' : ''}" loading="lazy" />
+              <div class="verified-badge">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>${d.badge}</span>
+              </div>
+            </div>
+            <div class="merchant-body">
+              <div>
+                <span class="merchant-category">${d.category}</span>
+                <h3 class="merchant-name">${d.name}</h3>
+                <p class="merchant-desc">${d.desc}</p>
+              </div>
+              <div class="merchant-meta-row">
+                <span>${d.location}</span>
+                <span>${d.rating}</span>
+              </div>
+              <div class="merchant-actions">
+                <button type="button" class="btn-emerald" style="padding:8px 12px;font-size:12px;" onclick="openDirectMerchant('${d.name}', '${m.phone}')">
+                  <span>${d.btnWhatsapp}</span>
+                </button>
+                <button type="button" class="btn-glass" style="padding:8px 12px;font-size:12px;" onclick="openMapLocation('${d.name}')">
+                  <span>${d.btnMap}</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
     function filterMarket(cat, btn) {
+      currentMarketCat = cat;
       document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
-
       const cards = document.querySelectorAll('.merchant-card');
       cards.forEach(card => {
-        if (cat === 'all' || card.dataset.cat === cat) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
+        card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'flex' : 'none';
       });
     }
 
-    // --- 3. ITINERARY PLANNER GENERATOR ---
-    const ITINERARIES = {
+    // --- 4. ITINERARY PLANNER DATA & GENERATOR ---
+    const ITINERARIES_DATA = {
       '2days': {
-        name: 'جدول نهاية الأسبوع الساحر (يومان)',
-        meta: 'الجدول المقترح لعطلة نهاية الأسبوع في عسير:',
-        steps: [
-          { time: 'صباح اليوم الأول · 09:00 ص', title: 'الصعود إلى قمة السودة ومعانقة بحر الغيوم (3,015م)', desc: 'استمتع بالنسيم العليل وإفطار عسيري شعبي (خبز ميفى مع عسل سدر بلدي ورضفة) في أحد المطلات السحابية، ثم خوض جولة في غابات العرعر.' },
-          { time: 'ظهيرة اليوم الأول · 02:00 م', title: 'غداء الحنيذ العسيري التراثي بأغصان المرخ', desc: 'تجربة تذوق أشهر مأكولات عسير في مطاعم الحنيذ التاريخية بمدخل السودة أو طريق محايل مع الأرز البشاور والشاي المنعنع.' },
-          { time: 'مساء اليوم الثاني · 05:00 م', title: 'زيارة قرية رجال ألمع التراثية وقصور الكوارتز', desc: 'النزول عبر عقبة الصماء للاستمتاع بإضاءات رجال ألمع الليلية وزيارة متحف ألمع الدائم وتناول القهوة الخولانية وسط الوادي.' }
-        ]
+        ar: {
+          name: 'جدول نهاية الأسبوع الساحر (يومان)',
+          meta: 'الجدول المقترح لعطلة نهاية الأسبوع في عسير:',
+          steps: [
+            { time: 'صباح اليوم الأول · 09:00 ص', title: 'الصعود إلى قمة السودة ومعانقة بحر الغيوم (3,015م)', desc: 'استمتع بالنسيم العليل وإفطار عسيري شعبي (خبز ميفى مع عسل سدر بلدي ورضفة) في أحد المطلات السحابية، ثم خوض جولة في غابات العرعر.' },
+            { time: 'ظهيرة اليوم الأول · 02:00 م', title: 'غداء الحنيذ العسيري التراثي بأغصان المرخ', desc: 'تجربة تذوق أشهر مأكولات عسير في مطاعم الحنيذ التاريخية بمدخل السودة أو طريق محايل مع الأرز البشاور والشاي المنعنع.' },
+            { time: 'مساء اليوم الثاني · 05:00 م', title: 'زيارة قرية رجال ألمع التراثية وقصور الكوارتز', desc: 'النزول عبر عقبة الصماء للاستمتاع بإضاءات رجال ألمع الليلية وزيارة متحف ألمع الدائم وتناول القهوة الخولانية وسط الوادي.' }
+          ]
+        },
+        en: {
+          name: 'The Magical Weekend Itinerary (2 Days)',
+          meta: 'Curated Weekend Escape Plan for Asir:',
+          steps: [
+            { time: 'Day 1 Morning · 09:00 AM', title: 'Summit Al-Soudah & Greet the Sea of Clouds (3,015m)', desc: 'Breathe crisp alpine air and savor an authentic Asiri breakfast (fresh Meefa bread with raw Sidr honey) at a cloud view terrace, followed by a walk in ancient juniper forests.' },
+            { time: 'Day 1 Afternoon · 02:00 PM', title: 'Traditional Wood-Smoked Asiri Haneeth Feast', desc: 'Experience Asir’s iconic culinary masterpiece cooked slowly over fragrant Marakh branches, served with Peshawar rice and mint tea.' },
+            { time: 'Day 2 Evening · 05:00 PM', title: 'Heritage Night at Rijal Almaa Quartz Village', desc: 'Descend scenic Akabat Al-Samaa to admire Rijal Almaa illuminated at night, explore the village museum, and taste freshly brewed Khawlani coffee.' }
+          ]
+        }
       },
       '4days': {
-        name: 'رحلة استكشاف عسير المتكاملة (٤ أيام)',
-        meta: 'الجدول المقترح للرحلة الاستكشافية:',
-        steps: [
-          { time: 'اليوم الأول · أبها والسودة', title: 'ممشى الضباب، شارع الفن وقرية المفتاحة التشكيلية', desc: 'استكشاف معالم أبها البهية، التعرّف على فن القط العسيري، وركوب التلفريك نحو بحر الغيوم في السودة.' },
-          { time: 'اليوم الثاني · رجال ألمع', title: 'قصور الكوارتز، أودية النحل، وعسل المجرى الحر', desc: 'قضاء يوم كامل في رجال ألمع وتناول المأكولات التهامية الشعبية وزيارة مناحل السدر.' },
-          { time: 'اليوم الثالث · تنومة', title: 'شلال دهناء، جبل منعاء ومزارع البن الخولاني', desc: 'جولة وسط مزارع البن في مدرجات تنومة الخضراء، وتذوق القهوة الطازجة مباشرة من المزارعين.' },
-          { time: 'اليوم الرابع · النماص والظهارة', title: 'قصر المقر التاريخي وغابات العرعر الشاهقة', desc: 'زيارة قصور النماص، متحف التراث، والتسوق من سوق النماص الشعبي لاقتناء العسل والبهارات والمقتنيات اليدوية.' }
-        ]
+        ar: {
+          name: 'رحلة استكشاف عسير المتكاملة (٤ أيام)',
+          meta: 'الجدول المقترح للرحلة الاستكشافية:',
+          steps: [
+            { time: 'اليوم الأول · أبها والسودة', title: 'ممشى الضباب، شارع الفن وقرية المفتاحة التشكيلية', desc: 'استكشاف معالم أبها البهية، التعرّف على فن القط العسيري، وركوب التلفريك نحو بحر الغيوم في السودة.' },
+            { time: 'اليوم الثاني · رجال ألمع', title: 'قصور الكوارتز، أودية النحل، وعسل المجرى الحر', desc: 'قضاء يوم كامل في رجال ألمع وتناول المأكولات التهامية الشعبية وزيارة مناحل السدر.' },
+            { time: 'اليوم الثالث · تنومة', title: 'شلال دهناء، جبل منعاء ومزارع البن الخولاني', desc: 'جولة وسط مزارع البن في مدرجات تنومة الخضراء، وتذوق القهوة الطازجة مباشرة من المزارعين.' },
+            { time: 'اليوم الرابع · النماص والظهارة', title: 'قصر المقر التاريخي وغابات العرعر الشاهقة', desc: 'زيارة قصور النماص، متحف التراث، والتسوق من سوق النماص الشعبي لاقتناء العسل والبهارات والمقتنيات اليدوية.' }
+          ]
+        },
+        en: {
+          name: 'Comprehensive Asir Explorer (4 Days)',
+          meta: 'Recommended 4-Day Discovery Journey:',
+          steps: [
+            { time: 'Day 1 · Abha & Al-Soudah', title: 'Fog Walkway, Art Street & Al-Muftaha Heritage Village', desc: 'Explore Abha’s cultural highlights, admire UNESCO Al-Qatt murals, and ride the alpine cable car into Al-Soudah’s cloud sea.' },
+            { time: 'Day 2 · Rijal Almaa', title: 'Quartz Palaces, Honey Valleys & Pure Majra Nectar', desc: 'Spend a full day discovering Rijal Almaa’s ancient fortresses, tasting local Tihami cuisine, and meeting local beekeepers.' },
+            { time: 'Day 3 · Tanomah', title: 'Dahna Waterfall, Mount Manaa & Khawlani Coffee', desc: 'Tour lush terraced coffee groves in Tanomah, observe live roasting, and hike along scenic granite riverbeds.' },
+            { time: 'Day 4 · Al-Namas', title: 'Historic Al-Muqar Palace & High Juniper Forests', desc: 'Visit historic stone palaces, explore heritage museums, and shop for local honey and handcrafted souvenirs at Al-Namas souk.' }
+          ]
+        }
       },
       '7days': {
-        name: 'مغامرة عسير الكبرى الشاملة (أسبوع كامل)',
-        meta: 'البرنامج السياحي الشامل لمنطقة عسير:',
-        steps: [
-          { time: 'الأيام ١ - ٢ · العاصمة أبها وقمم السودة', title: 'أبها الحضرية، قمم السودة ورياضة الطيران الشراعي', desc: 'المبيت في أكواخ السحاب، الطيران الشراعي فوق الأودية، وزيارة مطلات السد وقرية حبلة المعلقة.' },
-          { time: 'الأيام ٣ - ٤ · رجال ألمع وأودية تهامة عسير', title: 'سياحة التراث الإنساني ومزارع العسل والأودية الخضراء', desc: 'جولات مع أصحاب المناحل المحلية، ورش عمل فن القط، والإقامة في دور الضيافة التراثية المرممة.' },
-          { time: 'الأيام ٥ - ٧ · تنومة، النماص وبلقرن', title: 'مغامرات الهايكنج، شلالات المياه ومزارع البن والمدرجات', desc: 'تسلق صخور جبل منعاء، رحلات المشي الجبلي الطويلة، وزيارة مزارع البن والرمان والتين والتخييم البري.' }
-        ]
+        ar: {
+          name: 'مغامرة عسير الكبرى الشاملة (أسبوع كامل)',
+          meta: 'البرنامج السياحي الشامل لمنطقة عسير:',
+          steps: [
+            { time: 'الأيام ١ - ٢ · العاصمة أبها وقمم السودة', title: 'أبها الحضرية، قمم السودة ورياضة الطيران الشراعي', desc: 'المبيت في أكواخ السحاب، الطيران الشراعي فوق الأودية، وزيارة مطلات السد وقرية حبلة المعلقة.' },
+            { time: 'الأيام ٣ - ٤ · رجال ألمع وأودية تهامة عسير', title: 'سياحة التراث الإنساني ومزارع العسل والأودية الخضراء', desc: 'جولات مع أصحاب المناحل المحلية، ورش عمل فن القط، والإقامة في دور الضيافة التراثية المرممة.' },
+            { time: 'الأيام ٥ - ٧ · تنومة، النماص وبلقرن', title: 'مغامرات الهايكنج، شلالات المياه ومزارع البن والمدرجات', desc: 'تسلق صخور جبل منعاء، رحلات المشي الجبلي الطويلة، وزيارة مزارع البن والرمان والتين والتخييم البري.' }
+          ]
+        },
+        en: {
+          name: 'Grand Expedition of Asir (7 Days)',
+          meta: 'The Definitive Week-Long Asir Odyssey:',
+          steps: [
+            { time: 'Days 1-2 · Abha & Al-Soudah Peaks', title: 'Highland Living, Cloud Chalets & Tandem Paragliding', desc: 'Stay in cliffside cloud chalets, glide over dramatic ravines, and explore Habala hanging cliff village.' },
+            { time: 'Days 3-4 · Rijal Almaa & Tihama Valleys', title: 'Living Heritage, Wild Honey Groves & Traditional Lodges', desc: 'Meet master beekeepers, learn Al-Qatt Al-Asiri painting, and lodge in beautifully restored stone guesthouses.' },
+            { time: 'Days 5-7 · Tanomah, Al-Namas & Balqarn', title: 'Alpine Trekking, Waterfalls, Coffee Terraces & Camping', desc: 'Climb Mount Manaa granite faces, embark on multi-hour alpine ridge hikes, visit pomegranate and coffee farms, and enjoy mountain stargazing.' }
+          ]
+        }
       }
     };
 
     function selectPlannerDuration(key, box) {
-      document.querySelectorAll('.planner-option-box').forEach(b => b.classList.remove('selected'));
-      if (box) box.classList.add('selected');
-
-      const plan = ITINERARIES[key];
+      currentPlan = key;
+      if (box) {
+        document.querySelectorAll('.planner-option-box').forEach(b => b.classList.remove('selected'));
+        box.classList.add('selected');
+      }
+      const lang = isEnglish ? 'en' : 'ar';
+      const plan = ITINERARIES_DATA[key][lang];
       if (!plan) return;
 
       document.getElementById('itinerary-name').textContent = plan.name;
       document.getElementById('itinerary-meta').textContent = plan.meta;
 
       const tList = document.getElementById('timelineList');
-      tList.innerHTML = plan.steps.map((s, idx) => `
-        <div class="timeline-step">
-          <div class="step-dot">${idx + 1}</div>
-          <div class="step-content">
-            <div class="step-time">${s.time}</div>
-            <div class="step-title">${s.title}</div>
-            <p class="step-desc">${s.desc}</p>
+      if (tList) {
+        tList.innerHTML = plan.steps.map((s, idx) => `
+          <div class="timeline-step">
+            <div class="step-dot">${idx + 1}</div>
+            <div class="step-content">
+              <div class="step-time">${s.time}</div>
+              <div class="step-title">${s.title}</div>
+              <p class="step-desc">${s.desc}</p>
+            </div>
           </div>
-        </div>
-      `).join('');
+        `).join('');
+      }
     }
 
-    // --- 4. MODALS & INTERACTIONS ---
+    // --- 5. COMPREHENSIVE UI STRINGS DICTIONARY ---
+    const UI_STRINGS = {
+      ar: {
+        langToggle: 'English',
+        brandName: 'قمم عسير',
+        brandSub: 'ASEER PEAKS',
+        navDest: 'الوجهات الأيقونية',
+        navMarket: 'سوق المزارع والمتاجر',
+        navPlan: 'مخطط الرحلات الذكي',
+        navPartner: 'بوابة التجار والمزارع',
+        btnAddStore: 'سجّل متجرك',
+        btnPlanTrip: 'خطّط لرحلتك',
+        heroPill: 'موسم السحاب والمطر في قمم عسير ٢٠٢٦',
+        heroH1: 'فوق السحاب،<br>تبدأ حكايتك في عسير',
+        heroP: 'المنصة الذكية المتكاملة لاستكشاف أعلى قمم المملكة، دعم مزارع البن ومناحل العسل العسيرية الأصيلة، وحجز خيرة التجارب والمغامرات السياحية.',
+        lblDest: 'الوجهة المستهدفة',
+        lblType: 'نوع النشاط أو المنتج',
+        lblDate: 'موعد الزيارة',
+        btnSearch: 'استكشف عسير',
+        destOptions: [
+          { val: 'soudah', text: 'السودة (قمة 3,015م)' },
+          { val: 'rijal', text: 'رجال ألمع (التراث العالمي)' },
+          { val: 'tanomah', text: 'تنومة والنماص (مزارع وغابات)' },
+          { val: 'abha', text: 'أبها البهية (الفن والضباب)' }
+        ],
+        typeOptions: [
+          { val: 'all', text: 'جميع التجارب والمتاجر' },
+          { val: 'coffee', text: 'مزارع بن خولاني ومقاهي' },
+          { val: 'honey', text: 'مناحل عسل السدر والطلح' },
+          { val: 'hiking', text: 'هايكنج وطيران شراعي' },
+          { val: 'stay', text: 'أكواخ ونزل السحاب الريفية' }
+        ],
+        dateOptions: [
+          'نهاية هذا الأسبوع',
+          'خلال الشهر الجاري',
+          'موسم الأمطار والصيف'
+        ],
+        destTag: 'وجهات لا تُنسى',
+        destTitle: 'معالم عسير بين الطبيعة العذراء والتاريخ',
+        destSub: 'تنقل بين أعلى قمم جبال السروات، وشاهد شلالات تنومة، واستكشف قلاع رجال ألمع المبنية من الحجر والكوارتز.',
+        destHlHdr: 'أبرز الأنشطة والتجارب المعتمدة:',
+        destBtnBook: 'احجز تجربة في هذه الوجهة',
+        destBtnStores: 'استعرض متاجر ومزارع المنطقة',
+        marketTag: 'سوق عسير المحلي الرقمي',
+        marketTitle: 'دعم المزارع والمتاجر والحرفيين الأصليين',
+        marketSub: 'تسوّق وتواصل مباشرة مع أصحاب المزارع والمناحل والحرفيين في عسير بدون وسيط، مع ضمان وثيقة الجودة المعتمدة.',
+        pills: {
+          all: 'الكل (٦ متاجر مميزة)',
+          coffee: 'مزارع البن الخولاني',
+          honey: 'مناحل العسل الجبلي',
+          qatt: 'فن القط والحرف التراثية',
+          stay: 'أكواخ ونزل السحاب'
+        },
+        planTag: 'المخطط الذكي للرحلات',
+        planTitle: 'صمّم جدول رحلتك المثالي في ثوانٍ',
+        planSub: 'اختر مدة إقامتك ونمطك المفضل، وسيقوم النظام الذكي ببناء مسار يومي متكامل يشمل المطاعم الشعبية (الحنيذ والمبثوثة)، المطلات السحابية، ومواعيد الفعاليات.',
+        dur1Title: 'عطلة نهاية الأسبوع (يومان)',
+        dur1Desc: 'خطة مكثفة تجمع قمة السودة، وتناول الحنيذ التراثي، وجولة مسائية في ممشى الضباب وشارع الفن.',
+        dur2Title: 'عطلة استكشافية (٤ أيام)',
+        dur2Desc: 'تشمل السودة ورجال ألمع، ومزارع البن الخولاني في تنومة، وتجربة هايكنج مع مبيت في نزل ريفي.',
+        dur3Title: 'مغامرة عسير الكبرى (أسبوع كامل)',
+        dur3Desc: 'تغطية شاملة لكامل المنطقة من النماص شمالاً حتى الحبلة ورجال ألمع، مع زيارة الحرفيين ومزارع العسل.',
+        btnSavePlan: 'حفظ ومشاركة المسار',
+        partTag: 'بوابة أصحاب المتاجر والمزارع',
+        partTitle: 'هل تملك متجراً، مزرعة بن، أو نُزلاً ريفياً في عسير؟',
+        partDesc: 'انضم مجاناً إلى المنصة الرسمية للسياحة في عسير؛ واعرض خدماتك ومنتجاتك أمام آلاف السياح القادمين من داخل المملكة وخارجها، واحصل على "ختم جودة عسير المعتمد".',
+        partBtn: 'سجّل نشاطك الآن كشريك',
+        footerBrand: 'قمم عسير · Aseer Peaks',
+        footerSub: 'منصة رقمية مبنية وفق أعلى المعايير المعمارية لدعم سياحة عسير وتمكين المتاجر المحلية',
+        footerCredit: 'تصميم وتطوير: أ. طارق ابوعشي · منطقة عسير، المملكة العربية السعودية',
+        modalBookTitle: 'حجز تجربة سياحية',
+        lblBookName: 'الاسم الكامل',
+        lblBookPhone: 'رقم الجوال (واتساب)',
+        lblBookGuests: 'عدد الزوار',
+        lblBookDate: 'تاريخ الزيارة المفضل',
+        btnBookSubmit: 'تأكيد طلب الحجز المباشر',
+        modalPartTitle: 'تسجيل متجر / مزرعة كشريك سياحي',
+        modalPartSub: 'الانضمام مجاني وبدون أي عمولة دعمًا لأبناء المنطقة',
+        lblPartName: 'اسم المتجر / المزرعة / الفعالية',
+        lblPartCategory: 'تصنيف النشاط',
+        partCatOptions: [
+          'مزرعة بن خولاني أو فواكه',
+          'مناحل عسل جبلي حر',
+          'محترف فن القط العسيري أو حرف تراثية',
+          'نزل ريفي / أكواخ جبلية',
+          'مرشد هايكنج أو طيران شراعي معتمد',
+          'مقهى أو مطعم شعبي عسيري'
+        ],
+        lblPartLocation: 'الموقع الجغرافي في عسير',
+        lblPartPhone: 'رقم الجوال والتواصل المباشر',
+        btnPartSubmit: 'إرسال طلب الانضمام واعتماد النشاط'
+      },
+      en: {
+        langToggle: 'العربية',
+        brandName: 'Aseer Peaks',
+        brandSub: 'TOURISM & MERCHANT ECOSYSTEM',
+        navDest: 'Destinations',
+        navMarket: 'Local Marketplace',
+        navPlan: 'AI Trip Planner',
+        navPartner: 'Merchant Portal',
+        btnAddStore: 'Register Store',
+        btnPlanTrip: 'Plan Your Trip',
+        heroPill: 'Cloud & Mist Season in Asir Peaks 2026',
+        heroH1: 'Above the Clouds,<br>Your Story in Asir Begins',
+        heroP: 'The integrated smart ecosystem to explore Saudi Arabia’s highest peaks, support local coffee and honey farms, and book unforgettable mountain adventures.',
+        lblDest: 'Destination',
+        lblType: 'Experience Type',
+        lblDate: 'Travel Window',
+        btnSearch: 'Explore Asir',
+        destOptions: [
+          { val: 'soudah', text: 'Al-Soudah (Summit 3,015m)' },
+          { val: 'rijal', text: 'Rijal Almaa (World Heritage)' },
+          { val: 'tanomah', text: 'Tanomah & Al-Namas (Terraces & Forests)' },
+          { val: 'abha', text: 'Abha Highland (Art & Mist)' }
+        ],
+        typeOptions: [
+          { val: 'all', text: 'All Experiences & Stores' },
+          { val: 'coffee', text: 'Khawlani Coffee Farms & Cafés' },
+          { val: 'honey', text: 'Wild Sidr & Mountain Honey' },
+          { val: 'hiking', text: 'Hiking & Tandem Paragliding' },
+          { val: 'stay', text: 'Cloud Lodges & Mountain Chalets' }
+        ],
+        dateOptions: [
+          'This Upcoming Weekend',
+          'Within This Month',
+          'Rain & Summer Mountain Season'
+        ],
+        destTag: 'Unforgettable Destinations',
+        destTitle: 'Asir Landmarks: Pristine Nature & Living Heritage',
+        destSub: 'Journey across the highest peaks of the Sarawat range, witness cascading waterfalls in Tanomah, and explore UNESCO stone palaces in Rijal Almaa.',
+        destHlHdr: 'Certified Activities & Experiences:',
+        destBtnBook: 'Book an Experience Here',
+        destBtnStores: 'Explore Local Farms & Stores',
+        marketTag: 'Asir Digital Marketplace',
+        marketTitle: 'Empowering Local Farms, Merchants & Artisans',
+        marketSub: 'Shop and connect directly with verified Asir coffee growers, beekeepers, and heritage artisans with zero intermediaries and official quality badges.',
+        pills: {
+          all: 'All (6 Featured Stores)',
+          coffee: 'Khawlani Coffee',
+          honey: 'Mountain Honey',
+          qatt: 'Al-Qatt Art & Heritage',
+          stay: 'Cloud Chalets & Lodges'
+        },
+        planTag: 'Smart Trip Planner',
+        planTitle: 'Design Your Ideal Journey in Seconds',
+        planSub: 'Choose your stay duration and preferences. Our smart planner creates a complete day-by-day itinerary including traditional eateries (Haneeth), cloud viewpoints, and events.',
+        dur1Title: 'Weekend Escape (2 Days)',
+        dur1Desc: 'Intensive getaway covering Al-Soudah summit, traditional Haneeth feast, and an evening stroll on the Fog Walkway & Art Street.',
+        dur2Title: 'Explorer Journey (4 Days)',
+        dur2Desc: 'Explores Al-Soudah, Rijal Almaa, heirloom coffee farms in Tanomah, and an alpine hike with eco-lodge stay.',
+        dur3Title: 'Grand Asir Expedition (7 Days)',
+        dur3Desc: 'Comprehensive regional route from Al-Namas down to Habala and Rijal Almaa, visiting local honey apiaries and artisans.',
+        btnSavePlan: 'Save & Share Itinerary',
+        partTag: 'Merchant & Farmer Portal',
+        partTitle: 'Do you own a store, coffee farm, or rural lodge in Asir?',
+        partDesc: 'Join Asir’s official tourism ecosystem for free; showcase your offerings to thousands of domestic and global tourists, and obtain the "Verified Asir Quality" badge.',
+        partBtn: 'Register Your Business Now',
+        footerBrand: 'Aseer Peaks · قمم عسير',
+        footerSub: 'Engineered to international standards to empower Asir tourism and direct local commerce',
+        footerCredit: 'Designed & Developed by Tareq Aboushi · Asir Region, Kingdom of Saudi Arabia',
+        modalBookTitle: 'Book a Tourism Experience',
+        lblBookName: 'Full Name',
+        lblBookPhone: 'Mobile Number (WhatsApp)',
+        lblBookGuests: 'Number of Guests',
+        lblBookDate: 'Preferred Date of Visit',
+        btnBookSubmit: 'Confirm Direct Booking Request',
+        modalPartTitle: 'Register Store / Farm as Tourism Partner',
+        modalPartSub: 'Registration is 100% free with 0% commission in support of the local community',
+        lblPartName: 'Business / Farm / Activity Name',
+        lblPartCategory: 'Activity Category',
+        partCatOptions: [
+          'Khawlani Coffee or Fruit Farm',
+          'Pure Mountain Sidr Apiary',
+          'Al-Qatt Al-Asiri Art Studio / Crafts',
+          'Rural Eco-Lodge / Cloud Chalets',
+          'Certified Hiking or Paragliding Guide',
+          'Traditional Asiri Restaurant or Café'
+        ],
+        lblPartLocation: 'Location in Asir',
+        lblPartPhone: 'Mobile & Direct Contact',
+        btnPartSubmit: 'Submit Application & Verification Request'
+      }
+    };
+
+    // --- 6. LANGUAGE TOGGLE IMPLEMENTATION ---
+    function toggleLanguage() {
+      isEnglish = !isEnglish;
+      const html = document.documentElement;
+      const lang = isEnglish ? 'en' : 'ar';
+      html.lang = lang;
+      html.dir = isEnglish ? 'ltr' : 'rtl';
+
+      const s = UI_STRINGS[lang];
+
+      // Top Nav
+      document.getElementById('txt-lang-toggle').textContent = s.langToggle;
+      document.getElementById('txt-brand-name').textContent = s.brandName;
+      document.getElementById('txt-brand-sub').textContent = s.brandSub;
+      document.getElementById('txt-nav-dest').textContent = s.navDest;
+      document.getElementById('txt-nav-market').textContent = s.navMarket;
+      document.getElementById('txt-nav-plan').textContent = s.navPlan;
+      document.getElementById('txt-nav-partner').textContent = s.navPartner;
+      document.getElementById('txt-btn-add-store').querySelector('span').textContent = s.btnAddStore;
+      document.getElementById('txt-btn-plan-trip').querySelector('span').textContent = s.btnPlanTrip;
+
+      // Hero
+      document.getElementById('txt-hero-pill').textContent = s.heroPill;
+      document.getElementById('txt-hero-h1').innerHTML = s.heroH1;
+      document.getElementById('txt-hero-p').textContent = s.heroP;
+
+      // Search Hub
+      document.getElementById('lbl-dest').textContent = s.lblDest;
+      document.getElementById('lbl-type').textContent = s.lblType;
+      document.getElementById('lbl-date').textContent = s.lblDate;
+      document.getElementById('txt-search-btn').querySelector('span').textContent = s.btnSearch;
+
+      const selDest = document.getElementById('sel-dest');
+      const curDestVal = selDest.value;
+      selDest.innerHTML = s.destOptions.map(o => `<option value="${o.val}" ${o.val === curDestVal ? 'selected' : ''}>${o.text}</option>`).join('');
+
+      const selType = document.getElementById('sel-type');
+      const curTypeVal = selType.value;
+      selType.innerHTML = s.typeOptions.map(o => `<option value="${o.val}" ${o.val === curTypeVal ? 'selected' : ''}>${o.text}</option>`).join('');
+
+      const selDate = document.getElementById('sel-date');
+      selDate.innerHTML = s.dateOptions.map(o => `<option>${o}</option>`).join('');
+
+      // Destinations Explorer
+      document.getElementById('txt-dest-tag').textContent = s.destTag;
+      document.getElementById('txt-dest-title').textContent = s.destTitle;
+      document.getElementById('txt-dest-sub').textContent = s.destSub;
+      document.getElementById('txt-highlights-hdr').textContent = s.destHlHdr;
+      document.getElementById('txt-book-exp').querySelector('span').textContent = s.destBtnBook;
+      document.getElementById('txt-view-stores').querySelector('span').textContent = s.destBtnStores;
+
+      document.getElementById('tab-soudah').querySelector('span').textContent = DESTINATIONS.soudah[lang].tab;
+      document.getElementById('tab-rijal').querySelector('span').textContent = DESTINATIONS.rijal[lang].tab;
+      document.getElementById('tab-tanomah').querySelector('span').textContent = DESTINATIONS.tanomah[lang].tab;
+      document.getElementById('tab-adventure').querySelector('span').textContent = DESTINATIONS.adventure[lang].tab;
+
+      // Marketplace Section
+      document.getElementById('txt-market-tag').textContent = s.marketTag;
+      document.getElementById('txt-market-title').textContent = s.marketTitle;
+      document.getElementById('txt-market-sub').textContent = s.marketSub;
+      document.getElementById('pill-all').textContent = s.pills.all;
+      document.getElementById('pill-coffee').textContent = s.pills.coffee;
+      document.getElementById('pill-honey').textContent = s.pills.honey;
+      document.getElementById('pill-qatt').textContent = s.pills.qatt;
+      document.getElementById('pill-stay').textContent = s.pills.stay;
+
+      // Trip Planner Section
+      document.getElementById('txt-plan-tag').textContent = s.planTag;
+      document.getElementById('txt-plan-title').textContent = s.planTitle;
+      document.getElementById('txt-plan-sub').textContent = s.planSub;
+      document.getElementById('dur-1-title').textContent = s.dur1Title;
+      document.getElementById('dur-1-desc').textContent = s.dur1Desc;
+      document.getElementById('dur-2-title').textContent = s.dur2Title;
+      document.getElementById('dur-2-desc').textContent = s.dur2Desc;
+      document.getElementById('dur-3-title').textContent = s.dur3Title;
+      document.getElementById('dur-3-desc').textContent = s.dur3Desc;
+      document.getElementById('txt-btn-save-plan').querySelector('span').textContent = s.btnSavePlan;
+
+      // Partner Banner
+      document.getElementById('txt-part-tag').textContent = s.partTag;
+      document.getElementById('txt-part-title').textContent = s.partTitle;
+      document.getElementById('txt-part-desc').textContent = s.partDesc;
+      document.getElementById('txt-part-btn').querySelector('span').textContent = s.partBtn;
+
+      // Footer
+      document.getElementById('txt-footer-brand').textContent = s.footerBrand;
+      document.getElementById('txt-footer-sub').textContent = s.footerSub;
+      document.getElementById('txt-footer-credit').textContent = s.footerCredit;
+
+      // Modals
+      document.getElementById('modalBookingTitle').textContent = s.modalBookTitle;
+      document.getElementById('lbl-book-name').textContent = s.lblBookName;
+      document.getElementById('lbl-book-phone').textContent = s.lblBookPhone;
+      document.getElementById('lbl-book-guests').textContent = s.lblBookGuests;
+      document.getElementById('lbl-book-date').textContent = s.lblBookDate;
+      document.getElementById('btn-book-submit').textContent = s.btnBookSubmit;
+
+      document.getElementById('modalPartnerTitle').textContent = s.modalPartTitle;
+      document.getElementById('modalPartnerSub').textContent = s.modalPartSub;
+      document.getElementById('lbl-partner-name').textContent = s.lblPartName;
+      document.getElementById('lbl-partner-category').textContent = s.lblPartCategory;
+      document.getElementById('lbl-partner-location').textContent = s.lblPartLocation;
+      document.getElementById('lbl-partner-phone').textContent = s.lblPartPhone;
+      document.getElementById('btn-partner-submit').textContent = s.btnPartSubmit;
+
+      const partCat = document.getElementById('partnerCategory');
+      if (partCat) {
+        partCat.innerHTML = s.partCatOptions.map(o => `<option>${o}</option>`).join('');
+      }
+
+      // Input Placeholders
+      document.getElementById('bookName').placeholder = isEnglish ? 'e.g., Mohammed Al-Qahtani' : 'مثال: محمد القحطاني';
+      document.getElementById('partnerName').placeholder = isEnglish ? 'e.g., Peaks of Tanomah Coffee Farm' : 'مثال: مزرعة أعالي تنومة للبن';
+      document.getElementById('partnerLocation').placeholder = isEnglish ? 'e.g., Rijal Almaa - Al-Aws Valley' : 'مثال: رجال ألمع - وادي حسوة';
+
+      // Re-render Dynamic Blocks
+      renderTicker();
+      switchDest(currentDest, null);
+      renderMerchants();
+      selectPlannerDuration(currentPlan, null);
+    }
+
+    // --- 7. MODALS & INTERACTIONS ---
     function openBookingModal(title) {
-      document.getElementById('modalBookingTitle').textContent = `حجز: ${title}`;
+      const heading = isEnglish ? `Book Experience: ${title}` : `حجز: ${title}`;
+      document.getElementById('modalBookingTitle').textContent = heading;
       document.getElementById('bookingModal').showModal();
     }
 
@@ -1702,25 +2318,40 @@
     }
 
     function openDirectMerchant(name, phone) {
-      alert(`سيتم فتح محادثة واتساب المباشرة مع صاحب النشاط:\n${name}\nرقم التواصل: ${phone}`);
+      const msg = isEnglish
+        ? `Opening direct WhatsApp conversation with owner of:\n${name}\nContact: ${phone}`
+        : `سيتم فتح محادثة واتساب المباشرة مع صاحب النشاط:\n${name}\nرقم التواصل: ${phone}`;
+      alert(msg);
     }
 
     function openMapLocation(name) {
-      alert(`سيتم فتح إحداثيات الموقع الدقيق على خرائط جوجل لـ: ${name}`);
+      const msg = isEnglish
+        ? `Opening Google Maps GPS coordinates for:\n${name}`
+        : `سيتم فتح إحداثيات الموقع الدقيق على خرائط جوجل لـ: ${name}`;
+      alert(msg);
     }
 
     function submitBooking() {
-      alert('تم استلام طلب حجزك بنجاح! سيتواصل معك المرشد / ممثل التجربة عبر الواتساب لتأكيد الموعد وإرسال الموقع الدقيق.');
+      const msg = isEnglish
+        ? 'Your booking request has been received! The guide / experience host will contact you directly via WhatsApp.'
+        : 'تم استلام طلب حجزك بنجاح! سيتواصل معك المرشد / ممثل التجربة عبر الواتساب لتأكيد الموعد وإرسال الموقع الدقيق.';
+      alert(msg);
       document.getElementById('bookingModal').close();
     }
 
     function submitPartner() {
-      alert('تهانينا! تم تسجيل طلب انضمام نشاطك بنجاح في منصة قمم عسير. سيتواصل معك فريق الدعم خلال ٢٤ ساعة لتفعيل صفحتك ومنحك "ختم جودة عسير المعتمد".');
+      const msg = isEnglish
+        ? 'Congratulations! Your partner application has been submitted successfully. Our team will verify and activate your badge within 24 hours.'
+        : 'تهانينا! تم تسجيل طلب انضمام نشاطك بنجاح في منصة قمم عسير. سيتواصل معك فريق الدعم خلال ٢٤ ساعة لتفعيل صفحتك ومنحك "ختم جودة عسير المعتمد".';
+      alert(msg);
       document.getElementById('partnerModal').close();
     }
 
     function downloadItinerary() {
-      alert('تم تجهيز مسار الرحلة! يمكنك حفظه ومشاركته مع رفقاء السفر عبر الرابط أو بصيغة PDF.');
+      const msg = isEnglish
+        ? 'Itinerary ready! You can now share it with travel companions or export to PDF.'
+        : 'تم تجهيز مسار الرحلة! يمكنك حفظه ومشاركته مع رفقاء السفر عبر الرابط أو بصيغة PDF.';
+      alert(msg);
     }
 
     function triggerSearch() {
@@ -1731,37 +2362,13 @@
       document.getElementById('destinations').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // --- 5. BILINGUAL ARABIC / ENGLISH SWITCHER ---
-    let isEnglish = false;
-    function toggleLanguage() {
-      isEnglish = !isEnglish;
-      const html = document.documentElement;
-      html.lang = isEnglish ? 'en' : 'ar';
-      html.dir = isEnglish ? 'ltr' : 'rtl';
-
-      document.getElementById('txt-lang-toggle').textContent = isEnglish ? 'العربية' : 'English';
-      document.getElementById('txt-brand-name').textContent = isEnglish ? 'Aseer Peaks' : 'قمم عسير';
-      document.getElementById('txt-brand-sub').textContent = isEnglish ? 'TOURISM & MERCHANT ECOSYSTEM' : 'ASEER PEAKS';
-
-      document.getElementById('txt-nav-dest').textContent = isEnglish ? 'Destinations' : 'الوجهات الأيقونية';
-      document.getElementById('txt-nav-market').textContent = isEnglish ? 'Local Marketplace' : 'سوق المزارع والمتاجر';
-      document.getElementById('txt-nav-plan').textContent = isEnglish ? 'AI Trip Planner' : 'مخطط الرحلات الذكي';
-      document.getElementById('txt-nav-partner').textContent = isEnglish ? 'Merchant Portal' : 'بوابة التجار والمزارع';
-
-      document.getElementById('txt-btn-add-store').querySelector('span').textContent = isEnglish ? 'Register Store' : 'سجّل متجرك';
-      document.getElementById('txt-btn-plan-trip').querySelector('span').textContent = isEnglish ? 'Plan Your Trip' : 'خطّط لرحلتك';
-
-      document.getElementById('txt-hero-pill').textContent = isEnglish ? 'Cloud & Mist Season in Asir Peaks 2026' : 'موسم السحاب والمطر في قمم عسير ٢٠٢٦';
-      document.getElementById('txt-hero-h1').innerHTML = isEnglish ? 'Above the Clouds,<br>Your Story in Asir Begins' : 'فوق السحاب،<br>تبدأ حكايتك في عسير';
-      document.getElementById('txt-hero-p').textContent = isEnglish
-        ? 'The integrated smart ecosystem to explore Saudi Arabia’s highest peaks, support local coffee and honey farms, and book unforgettable mountain adventures.'
-        : 'المنصة الذكية المتكاملة لاستكشاف أعلى قمم المملكة، دعم مزارع البن ومناحل العسل العسيرية الأصيلة، وحجز خيرة التجارب والمغامرات السياحية.';
-
-      document.getElementById('lbl-dest').textContent = isEnglish ? 'Destination' : 'الوجهة المستهدفة';
-      document.getElementById('lbl-type').textContent = isEnglish ? 'Experience Type' : 'نوع النشاط أو المنتج';
-      document.getElementById('lbl-date').textContent = isEnglish ? 'Travel Window' : 'موعد الزيارة';
-      document.getElementById('txt-search-btn').querySelector('span').textContent = isEnglish ? 'Explore Asir' : 'استكشف عسير';
-    }
+    // --- 8. INITIAL STARTUP BOOTSTRAP ---
+    window.addEventListener('DOMContentLoaded', () => {
+      renderTicker();
+      renderMerchants();
+      switchDest('soudah', document.getElementById('tab-soudah'));
+      selectPlannerDuration('2days', document.querySelector('.planner-option-box'));
+    });
   </script>
 </body>
 </html>
