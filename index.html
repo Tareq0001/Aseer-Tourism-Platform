@@ -921,6 +921,12 @@
       box-shadow: 0 32px 96px rgba(0, 0, 0, 0.85);
     }
 
+    dialog.asir-modal.map-modal {
+      width: min(860px, 94vw);
+      max-height: 90vh;
+      padding: 26px;
+    }
+
     dialog.asir-modal::backdrop {
       background: rgba(0, 0, 0, 0.72);
       backdrop-filter: blur(10px);
@@ -1699,6 +1705,39 @@
     </form>
   </dialog>
 
+  <!-- Modal 3: Interactive Map Modal (Desktop In-App Experience) -->
+  <dialog class="asir-modal map-modal" id="mapModal">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px;">
+      <div>
+        <span class="section-tag" id="mapModalCategory" style="margin-bottom:4px; display:inline-block; font-size:11px;">معلم سياحي معتمد</span>
+        <h3 style="font-size:22px; font-weight:800; color:#ffffff; margin:0;" id="mapModalTitle">الموقع على الخريطة</h3>
+        <p style="font-size:13px; color:var(--asir-text-muted); margin:4px 0 0;" id="mapModalLocation">📍 منطقة عسير</p>
+      </div>
+      <button type="button" style="background:none; border:none; color:#ffffff; font-size:24px; cursor:pointer; line-height:1;" onclick="closeMapModal()" aria-label="إغلاق">✕</button>
+    </div>
+
+    <!-- Map Container -->
+    <div style="position:relative; width:100%; height:400px; border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,0.15); background:#0c1d18;">
+      <iframe id="mapModalIframe" src="" style="width:100%; height:100%; border:none;" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <!-- Modal Footer Actions -->
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-top:20px;">
+      <a href="#" id="mapModalExternalLink" target="_blank" rel="noopener noreferrer" class="btn-emerald" style="padding:10px 18px; font-size:13px; display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        <span id="txt-map-open-full">فتح الاتجاهات المباشرة في Google Maps ↗</span>
+      </a>
+      <div style="display:flex; gap:10px;">
+        <button type="button" class="btn-glass" id="mapModalWaBtn" style="padding:10px 16px; font-size:13px;" onclick="openMapModalWhatsApp()">
+          <span id="txt-map-wa">تواصل واتساب</span>
+        </button>
+        <button type="button" class="btn-glass" style="padding:10px 16px; font-size:13px;" onclick="closeMapModal()">
+          <span id="txt-map-close">إغلاق</span>
+        </button>
+      </div>
+    </div>
+  </dialog>
+
   <!-- JavaScript Interaction Logic -->
   <script>
     // =========================================================================
@@ -1913,7 +1952,7 @@
         cat: 'restaurant',
         img: 'assets/asir_food.jpg',
         filter: 'none',
-        mapQuery: 'مطاعم حنيذ السودة أبها عسير',
+        coords: '18.2385,42.4410',
         ar: {
           badge: 'مطبخ شعبي معتمد',
           category: 'مطابخ وتراث الطهي العسيري',
@@ -1941,7 +1980,7 @@
         cat: 'souk',
         img: 'assets/asir_souk.jpg',
         filter: 'none',
-        mapQuery: 'سوق الثلاثاء الشعبي طريق الملك عبد العزيز أبها',
+        coords: '18.2158,42.5025',
         ar: {
           badge: 'سوق تراثي رسمي',
           category: 'أسواق ومقتنيات شعبية تاريخية',
@@ -1969,7 +2008,7 @@
         cat: 'attraction',
         img: 'assets/hero_asir_peaks.jpg',
         filter: 'none',
-        mapQuery: 'تلفريك السودة أبها عسير',
+        coords: '18.2680,42.3645',
         ar: {
           badge: 'معلم سياحي معتمد',
           category: 'تلفريك معلق ومغامرات سحابية',
@@ -1997,7 +2036,7 @@
         cat: 'attraction',
         img: 'assets/adventure_hiking.jpg',
         filter: 'none',
-        mapQuery: 'منتزه الحبلة السياحي عسير',
+        coords: '18.0340,42.8735',
         ar: {
           badge: 'معلم أثري ومغامرة',
           category: 'قرية معلقة ورياضات جبلية',
@@ -2025,7 +2064,7 @@
         cat: 'coffee',
         img: 'assets/coffee_honey_terrace.jpg',
         filter: 'none',
-        mapQuery: 'مزارع البن تنومة جبال منعاء عسير',
+        coords: '18.9250,42.1650',
         ar: {
           badge: 'ختم جودة عسير',
           category: 'مزرعة بن مختص ومقهى ريفي',
@@ -2053,7 +2092,7 @@
         cat: 'honey',
         img: 'assets/coffee_honey_terrace.jpg',
         filter: 'hue-rotate(25deg)',
-        mapQuery: 'قرية رجال ألمع التراثية رجال ألمع عسير',
+        coords: '18.2185,42.3165',
         ar: {
           badge: 'عسل جبلي مفحوص',
           category: 'مناحل ومحاصيل جبلية',
@@ -2081,7 +2120,7 @@
         cat: 'qatt',
         img: 'assets/rijal_almaa.jpg',
         filter: 'none',
-        mapQuery: 'قرية المفتاحة التشكيلية أبها عسير',
+        coords: '18.2165,42.5038',
         ar: {
           badge: 'تراث يونيسكو معتمد',
           category: 'حرف يدوية وفنون جدارية',
@@ -2109,7 +2148,7 @@
         cat: 'stay',
         img: 'assets/adventure_hiking.jpg',
         filter: 'none',
-        mapQuery: 'مطل جرف ريدة السودة عسير',
+        coords: '18.2725,42.3660',
         ar: {
           badge: 'إقامة ريفية مرخصة',
           category: 'نزل بيئية وأكواخ جبلية',
@@ -2164,7 +2203,7 @@
                 <button type="button" class="btn-emerald" style="padding:8px 12px;font-size:12px;" onclick="openDirectMerchant('${d.name}', '${m.phone}')">
                   <span>${d.btnWhatsapp}</span>
                 </button>
-                <button type="button" class="btn-glass" style="padding:8px 12px;font-size:12px;" onclick="openMapLocation('${m.mapQuery || d.name}')">
+                <button type="button" class="btn-glass" style="padding:8px 12px;font-size:12px;" onclick="openMapLocation(${m.id})">
                   <span>${d.btnMap}</span>
                 </button>
               </div>
@@ -2379,7 +2418,10 @@
         ],
         lblPartLocation: 'الموقع الجغرافي في عسير',
         lblPartPhone: 'رقم الجوال والتواصل المباشر',
-        btnPartSubmit: 'إرسال طلب الانضمام واعتماد النشاط'
+        btnPartSubmit: 'إرسال طلب الانضمام واعتماد النشاط',
+        mapOpenFull: 'فتح الاتجاهات المباشرة في Google Maps ↗',
+        mapWa: 'تواصل واتساب',
+        mapClose: 'إغلاق'
       },
       en: {
         langToggle: 'العربية',
@@ -2480,7 +2522,10 @@
         ],
         lblPartLocation: 'Location in Asir',
         lblPartPhone: 'Mobile & Direct Contact',
-        btnPartSubmit: 'Submit Application & Verification Request'
+        btnPartSubmit: 'Submit Application & Verification Request',
+        mapOpenFull: 'Open Live Navigation in Google Maps ↗',
+        mapWa: 'WhatsApp Inquiries',
+        mapClose: 'Close'
       }
     };
 
@@ -2604,6 +2649,13 @@
       document.getElementById('lbl-partner-phone').textContent = s.lblPartPhone;
       document.getElementById('btn-partner-submit').textContent = s.btnPartSubmit;
 
+      const txtMapOpenFull = document.getElementById('txt-map-open-full');
+      if (txtMapOpenFull) txtMapOpenFull.textContent = s.mapOpenFull;
+      const txtMapWa = document.getElementById('txt-map-wa');
+      if (txtMapWa) txtMapWa.textContent = s.mapWa;
+      const txtMapClose = document.getElementById('txt-map-close');
+      if (txtMapClose) txtMapClose.textContent = s.mapClose;
+
       const partCat = document.getElementById('partnerCategory');
       if (partCat) {
         partCat.innerHTML = s.partCatOptions.map(o => `<option>${o}</option>`).join('');
@@ -2622,6 +2674,8 @@
     }
 
     // --- 7. MODALS & INTERACTIONS ---
+    let currentMapMerchant = null;
+
     function openBookingModal(title) {
       const heading = isEnglish ? `Book Experience: ${title}` : `حجز: ${title}`;
       document.getElementById('modalBookingTitle').textContent = heading;
@@ -2643,11 +2697,79 @@
       if (!win) location.href = waUrl;
     }
 
-    function openMapLocation(query) {
-      const targetQuery = query || 'منطقة عسير المملكة العربية السعودية';
-      const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(targetQuery)}`;
-      const win = window.open(mapUrl, '_blank', 'noopener,noreferrer');
-      if (!win) location.href = mapUrl;
+    function openMapLocation(target) {
+      let coords = '18.2164,42.5053'; // Asir / Abha default
+      let name = isEnglish ? 'Aseer Region, Saudi Arabia' : 'منطقة عسير، المملكة العربية السعودية';
+      let category = isEnglish ? 'Official Asir Landmark' : 'معلم سياحي معتمد';
+      let locationText = isEnglish ? '📍 Aseer, Saudi Arabia' : '📍 عسير، المملكة العربية السعودية';
+      let phone = '0550000000';
+
+      if (typeof target === 'number' || (!isNaN(target) && target !== '')) {
+        const m = MERCHANTS_DATA.find(item => item.id == target);
+        if (m) {
+          currentMapMerchant = m;
+          coords = m.coords || coords;
+          const d = m[isEnglish ? 'en' : 'ar'];
+          name = d.name;
+          category = d.category;
+          locationText = d.location;
+          phone = m.phone;
+        }
+      } else if (typeof target === 'string' && target.trim()) {
+        name = target;
+      }
+
+      // External Google Maps directions URL with exact coordinates
+      const externalMapUrl = `https://www.google.com/maps?q=${encodeURIComponent(coords)}`;
+
+      // Mobile check (<= 768px): Launch native mobile Google Maps / Apple Maps app seamlessly
+      if (window.innerWidth <= 768) {
+        const win = window.open(externalMapUrl, '_blank', 'noopener,noreferrer');
+        if (!win) location.href = externalMapUrl;
+        return;
+      }
+
+      // Desktop (> 768px): Open luxury in-app Map Modal (No distracting competitors list)
+      const mapModal = document.getElementById('mapModal');
+      if (!mapModal) {
+        window.open(externalMapUrl, '_blank', 'noopener,noreferrer');
+        return;
+      }
+
+      document.getElementById('mapModalTitle').textContent = name;
+      document.getElementById('mapModalCategory').textContent = category;
+      document.getElementById('mapModalLocation').textContent = locationText;
+
+      const extLink = document.getElementById('mapModalExternalLink');
+      if (extLink) extLink.href = externalMapUrl;
+
+      const waBtn = document.getElementById('mapModalWaBtn');
+      if (waBtn) {
+        waBtn.style.display = phone ? 'inline-flex' : 'none';
+      }
+
+      const iframe = document.getElementById('mapModalIframe');
+      if (iframe) {
+        iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(coords)}&z=15&output=embed`;
+      }
+
+      mapModal.showModal();
+    }
+
+    function closeMapModal() {
+      const mapModal = document.getElementById('mapModal');
+      if (mapModal) {
+        mapModal.close();
+        const iframe = document.getElementById('mapModalIframe');
+        if (iframe) iframe.src = '';
+      }
+    }
+
+    function openMapModalWhatsApp() {
+      if (currentMapMerchant) {
+        const d = currentMapMerchant[isEnglish ? 'en' : 'ar'];
+        openDirectMerchant(d.name, currentMapMerchant.phone);
+      }
     }
 
     function submitBooking() {
