@@ -1913,6 +1913,7 @@
         cat: 'restaurant',
         img: 'assets/asir_food.jpg',
         filter: 'none',
+        mapQuery: 'مطاعم حنيذ السودة أبها عسير',
         ar: {
           badge: 'مطبخ شعبي معتمد',
           category: 'مطابخ وتراث الطهي العسيري',
@@ -1940,6 +1941,7 @@
         cat: 'souk',
         img: 'assets/asir_souk.jpg',
         filter: 'none',
+        mapQuery: 'سوق الثلاثاء الشعبي طريق الملك عبد العزيز أبها',
         ar: {
           badge: 'سوق تراثي رسمي',
           category: 'أسواق ومقتنيات شعبية تاريخية',
@@ -1967,6 +1969,7 @@
         cat: 'attraction',
         img: 'assets/hero_asir_peaks.jpg',
         filter: 'none',
+        mapQuery: 'تلفريك السودة أبها عسير',
         ar: {
           badge: 'معلم سياحي معتمد',
           category: 'تلفريك معلق ومغامرات سحابية',
@@ -1994,6 +1997,7 @@
         cat: 'attraction',
         img: 'assets/adventure_hiking.jpg',
         filter: 'none',
+        mapQuery: 'منتزه الحبلة السياحي عسير',
         ar: {
           badge: 'معلم أثري ومغامرة',
           category: 'قرية معلقة ورياضات جبلية',
@@ -2021,6 +2025,7 @@
         cat: 'coffee',
         img: 'assets/coffee_honey_terrace.jpg',
         filter: 'none',
+        mapQuery: 'مزارع البن تنومة جبال منعاء عسير',
         ar: {
           badge: 'ختم جودة عسير',
           category: 'مزرعة بن مختص ومقهى ريفي',
@@ -2048,6 +2053,7 @@
         cat: 'honey',
         img: 'assets/coffee_honey_terrace.jpg',
         filter: 'hue-rotate(25deg)',
+        mapQuery: 'قرية رجال ألمع التراثية رجال ألمع عسير',
         ar: {
           badge: 'عسل جبلي مفحوص',
           category: 'مناحل ومحاصيل جبلية',
@@ -2075,6 +2081,7 @@
         cat: 'qatt',
         img: 'assets/rijal_almaa.jpg',
         filter: 'none',
+        mapQuery: 'قرية المفتاحة التشكيلية أبها عسير',
         ar: {
           badge: 'تراث يونيسكو معتمد',
           category: 'حرف يدوية وفنون جدارية',
@@ -2102,6 +2109,7 @@
         cat: 'stay',
         img: 'assets/adventure_hiking.jpg',
         filter: 'none',
+        mapQuery: 'مطل جرف ريدة السودة عسير',
         ar: {
           badge: 'إقامة ريفية مرخصة',
           category: 'نزل بيئية وأكواخ جبلية',
@@ -2156,7 +2164,7 @@
                 <button type="button" class="btn-emerald" style="padding:8px 12px;font-size:12px;" onclick="openDirectMerchant('${d.name}', '${m.phone}')">
                   <span>${d.btnWhatsapp}</span>
                 </button>
-                <button type="button" class="btn-glass" style="padding:8px 12px;font-size:12px;" onclick="openMapLocation('${d.name}')">
+                <button type="button" class="btn-glass" style="padding:8px 12px;font-size:12px;" onclick="openMapLocation('${m.mapQuery || d.name}')">
                   <span>${d.btnMap}</span>
                 </button>
               </div>
@@ -2625,40 +2633,67 @@
     }
 
     function openDirectMerchant(name, phone) {
-      const msg = isEnglish
-        ? `Opening direct WhatsApp conversation with owner of:\n${name}\nContact: ${phone}`
-        : `سيتم فتح محادثة واتساب المباشرة مع صاحب النشاط:\n${name}\nرقم التواصل: ${phone}`;
-      alert(msg);
+      const cleanPhone = (phone || '0550000000').replace(/\D/g, '');
+      const intPhone = cleanPhone.startsWith('0') ? '966' + cleanPhone.slice(1) : (cleanPhone.startsWith('966') ? cleanPhone : '966' + cleanPhone);
+      const text = isEnglish
+        ? `Hello! I would like to inquire and reserve for "${name}" via Aseer Peaks Platform.`
+        : `السلام عليكم ورحمة الله، أود الاستفسار والحجز بخصوص "${name}" عبر منصة قمم عسير.`;
+      const waUrl = `https://wa.me/${intPhone}?text=${encodeURIComponent(text)}`;
+      const win = window.open(waUrl, '_blank', 'noopener,noreferrer');
+      if (!win) location.href = waUrl;
     }
 
-    function openMapLocation(name) {
-      const msg = isEnglish
-        ? `Opening Google Maps GPS coordinates for:\n${name}`
-        : `سيتم فتح إحداثيات الموقع الدقيق على خرائط جوجل لـ: ${name}`;
-      alert(msg);
+    function openMapLocation(query) {
+      const targetQuery = query || 'منطقة عسير المملكة العربية السعودية';
+      const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(targetQuery)}`;
+      const win = window.open(mapUrl, '_blank', 'noopener,noreferrer');
+      if (!win) location.href = mapUrl;
     }
 
     function submitBooking() {
-      const msg = isEnglish
-        ? 'Your booking request has been received! The guide / experience host will contact you directly via WhatsApp.'
-        : 'تم استلام طلب حجزك بنجاح! سيتواصل معك المرشد / ممثل التجربة عبر الواتساب لتأكيد الموعد وإرسال الموقع الدقيق.';
-      alert(msg);
+      const name = document.getElementById('bookName').value;
+      const guests = document.getElementById('bookGuests').value;
+      const date = document.getElementById('bookDate').value;
+      const expTitle = document.getElementById('modalBookingTitle').textContent.replace(/^(حجز:\s*|Book Experience:\s*)/, '');
+      
+      const confirmMsg = isEnglish
+        ? `Thank you ${name}! Your booking request for "${expTitle}" (${guests} guests on ${date}) has been submitted. Our verified guide will contact you shortly via WhatsApp.`
+        : `شكراً لك ${name}! تم استلام طلب حجز تجربة "${expTitle}" (${guests} زوار بتاريخ ${date}) بنجاح. سيتواصل معك المرشد المعتمد لتأكيد التفاصيل.`;
+      alert(confirmMsg);
       document.getElementById('bookingModal').close();
     }
 
     function submitPartner() {
-      const msg = isEnglish
-        ? 'Congratulations! Your partner application has been submitted successfully. Our team will verify and activate your badge within 24 hours.'
-        : 'تهانينا! تم تسجيل طلب انضمام نشاطك بنجاح في منصة قمم عسير. سيتواصل معك فريق الدعم خلال ٢٤ ساعة لتفعيل صفحتك ومنحك "ختم جودة عسير المعتمد".';
-      alert(msg);
+      const storeName = document.getElementById('partnerName').value;
+      const confirmMsg = isEnglish
+        ? `Congratulations! Partner application for "${storeName}" has been submitted. Our team will verify and activate your "Verified Asir Quality" badge within 24 hours.`
+        : `تهانينا! تم تسجيل طلب الشراكة لـ "${storeName}" بنجاح في منصة قمم عسير. سيتواصل معك فريق الاعتماد لمنحك "ختم جودة عسير المعتمد" خلال ٢٤ ساعة.`;
+      alert(confirmMsg);
       document.getElementById('partnerModal').close();
     }
 
     function downloadItinerary() {
-      const msg = isEnglish
-        ? 'Itinerary ready! You can now share it with travel companions or export to PDF.'
-        : 'تم تجهيز مسار الرحلة! يمكنك حفظه ومشاركته مع رفقاء السفر عبر الرابط أو بصيغة PDF.';
-      alert(msg);
+      const plan = ITINERARIES_DATA[currentPlan] ? ITINERARIES_DATA[currentPlan][isEnglish ? 'en' : 'ar'] : null;
+      const shareTitle = plan ? plan.name : (isEnglish ? 'Aseer Peaks Itinerary' : 'مسار رحلة قمم عسير');
+      const shareText = plan
+        ? `${plan.name}\n${plan.steps.map(s => `• ${s.time}: ${s.title}`).join('\n')}`
+        : 'جدول رحلة عسير السياحي';
+
+      if (navigator.share) {
+        navigator.share({
+          title: shareTitle,
+          text: shareText,
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(shareText + '\n' + window.location.href);
+        }
+        const msg = isEnglish
+          ? 'Itinerary copied to clipboard! You can now paste and share it with travel companions.'
+          : 'تم نسخ مسار الرحلة إلى الحافظة بنجاح! يمكنك الآن لصقه ومشاركته مع رفقاء السفر.';
+        alert(msg);
+      }
     }
 
     function triggerSearch() {
