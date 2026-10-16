@@ -982,6 +982,56 @@
       gap: 20px;
     }
 
+    /* ================= 10. MOBILE BOTTOM NAVIGATION & TOUCH OPTIMIZATION ================= */
+    .mobile-bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background: rgba(5, 14, 11, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      display: none;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 999;
+      padding: 0 6px;
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    .mobile-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      min-width: 58px;
+      min-height: 48px;
+      padding: 6px 4px;
+      border-radius: 8px;
+      transition: color 0.2s ease, transform 0.15s ease;
+      touch-action: manipulation;
+    }
+
+    .mobile-nav-item:active {
+      transform: scale(0.94);
+    }
+
+    .mobile-nav-item.active,
+    .mobile-nav-item:hover {
+      color: var(--asir-emerald);
+    }
+
+    .mobile-nav-item svg {
+      stroke: currentColor;
+    }
+
     /* Responsive Queries */
     @media (max-width: 900px) {
       .hero-search-hub {
@@ -995,6 +1045,219 @@
       }
       .nav-links {
         display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding-bottom: calc(64px + env(safe-area-inset-bottom, 10px));
+      }
+
+      .mobile-bottom-nav {
+        display: flex;
+      }
+
+      .nav-container {
+        padding: 0 16px;
+        height: 60px;
+      }
+
+      .nav-actions #txt-btn-add-store {
+        display: none;
+      }
+
+      .hero-section {
+        padding: 90px 16px 50px;
+        min-height: auto;
+      }
+
+      .hero-h1 {
+        font-size: clamp(30px, 8.5vw, 42px);
+        margin-bottom: 12px;
+      }
+
+      .hero-p {
+        font-size: 15px;
+        margin-bottom: 24px;
+        line-height: 1.6;
+      }
+
+      .hero-search-hub {
+        padding: 18px 16px;
+        border-radius: 20px;
+        gap: 14px;
+      }
+
+      .search-field select {
+        font-size: 14px;
+        padding: 10px 12px;
+        min-height: 46px;
+      }
+
+      .section-wrap {
+        padding: 48px 16px;
+      }
+
+      .section-head {
+        margin-bottom: 22px;
+      }
+
+      .section-title {
+        font-size: clamp(23px, 6.5vw, 30px);
+      }
+
+      .section-sub {
+        font-size: 14px;
+      }
+
+      /* Native App Swipeable Tabs & Pills */
+      .dest-tabs {
+        display: flex;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 8px;
+        padding: 4px 2px 10px;
+        margin-bottom: 18px;
+      }
+      .dest-tabs::-webkit-scrollbar {
+        display: none;
+      }
+      .dest-tab-btn {
+        flex-shrink: 0;
+        white-space: nowrap;
+        padding: 10px 16px;
+        font-size: 13px;
+        min-height: 44px;
+      }
+
+      .market-filter-pills {
+        display: flex;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 8px;
+        padding: 4px 2px 12px;
+        margin-bottom: 20px;
+      }
+      .market-filter-pills::-webkit-scrollbar {
+        display: none;
+      }
+      .filter-pill {
+        flex-shrink: 0;
+        white-space: nowrap;
+        padding: 9px 16px;
+        font-size: 13px;
+        min-height: 44px;
+      }
+
+      /* Destination card touch improvements */
+      .dest-photo-pane {
+        min-height: 250px;
+        max-height: 300px;
+      }
+
+      .dest-info-pane {
+        padding: 22px 16px;
+      }
+
+      .dest-info-pane h3 {
+        font-size: 21px;
+      }
+
+      .dest-desc {
+        font-size: 14px;
+      }
+
+      .dest-info-pane > div:last-child {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
+
+      .dest-info-pane > div:last-child > button,
+      .dest-info-pane > div:last-child > a {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        min-height: 46px;
+      }
+
+      /* Merchants & Restaurants Grid */
+      .merchants-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .merchant-thumb {
+        height: 200px;
+      }
+
+      .merchant-body {
+        padding: 20px 16px;
+      }
+
+      .merchant-name {
+        font-size: 18px;
+      }
+
+      .merchant-desc {
+        font-size: 13px;
+      }
+
+      .merchant-actions button {
+        min-height: 44px;
+        padding: 10px 14px;
+      }
+
+      /* Planner Controls */
+      .planner-card {
+        padding: 24px 16px;
+        border-radius: 20px;
+      }
+
+      .planner-option-box {
+        padding: 16px;
+        min-height: 46px;
+      }
+
+      .itinerary-output {
+        padding: 20px 14px;
+      }
+
+      /* Partner Banner */
+      .partner-banner {
+        padding: 30px 18px;
+        border-radius: 20px;
+      }
+
+      .partner-banner h3 {
+        font-size: 22px;
+      }
+
+      .partner-banner p {
+        font-size: 14px;
+      }
+
+      .btn-partner-white {
+        width: 100%;
+        justify-content: center;
+        min-height: 48px;
+      }
+
+      /* Modals on Mobile: full sheet touch UI */
+      dialog.asir-modal {
+        width: min(94vw, 500px);
+        max-height: 90dvh;
+        padding: 22px 16px;
+        border-radius: 20px;
+      }
+
+      .modal-input {
+        min-height: 48px;
+        font-size: 15px;
       }
     }
   </style>
@@ -1224,143 +1487,18 @@
 
     <!-- Filter Pills -->
     <div class="market-filter-pills" role="tablist">
-      <button type="button" class="filter-pill active" onclick="filterMarket('all', this)" id="pill-all">الكل (٦ متاجر مميزة)</button>
+      <button type="button" class="filter-pill active" onclick="filterMarket('all', this)" id="pill-all">الكل (٨ خيارات مميزة)</button>
+      <button type="button" class="filter-pill" onclick="filterMarket('restaurant', this)" id="pill-restaurant">المطاعم الشعبية</button>
+      <button type="button" class="filter-pill" onclick="filterMarket('souk', this)" id="pill-souk">الأسواق التراثية</button>
+      <button type="button" class="filter-pill" onclick="filterMarket('attraction', this)" id="pill-attraction">المعالم والترفيه</button>
       <button type="button" class="filter-pill" onclick="filterMarket('coffee', this)" id="pill-coffee">مزارع البن الخولاني</button>
       <button type="button" class="filter-pill" onclick="filterMarket('honey', this)" id="pill-honey">مناحل العسل الجبلي</button>
-      <button type="button" class="filter-pill" onclick="filterMarket('qatt', this)" id="pill-qatt">فن القط والحرف التراثية</button>
+      <button type="button" class="filter-pill" onclick="filterMarket('qatt', this)" id="pill-qatt">فن القط والحرف</button>
       <button type="button" class="filter-pill" onclick="filterMarket('stay', this)" id="pill-stay">أكواخ ونزل السحاب</button>
     </div>
 
-    <!-- Merchants Grid -->
-    <div class="merchants-grid" id="merchantsGrid">
-      <!-- Merchant 1: Khawlani Coffee -->
-      <article class="merchant-card" data-cat="coffee">
-        <div class="merchant-thumb">
-          <img src="assets/coffee_honey_terrace.jpg" alt="مزرعة بن عسير الخولاني" loading="lazy" />
-          <div class="verified-badge">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>ختم جودة عسير</span>
-          </div>
-        </div>
-        <div class="merchant-body">
-          <div>
-            <span class="merchant-category">مزرعة بن مختص ومقهى ريفي</span>
-            <h3 class="merchant-name">مزرعة قمم البن الخولاني</h3>
-            <p class="merchant-desc">
-              بن خولاني سعودي فاخر من مدرجات جبال تنومة على ارتفاع 2,200م. نوفر جلسات تذوق القهوة وتجربة جني الثمار بين المزارع العتيقة.
-            </p>
-          </div>
-          <div class="merchant-meta-row">
-            <span>📍 تنومة · جبال منعاء</span>
-            <span>⭐ 4.9 (184 تقييم)</span>
-          </div>
-          <div class="merchant-actions">
-            <button type="button" class="btn-emerald" style="padding:8px 12px;font-size:12px;" onclick="openDirectMerchant('مزرعة قمم البن الخولاني', '0550000001')">
-              <span>تواصل واتساب</span>
-            </button>
-            <button type="button" class="btn-glass" style="padding:8px 12px;font-size:12px;" onclick="openMapLocation('مزرعة قمم البن الخولاني')">
-              <span>الموقع بالخريطة</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <!-- Merchant 2: Asir Honey -->
-      <article class="merchant-card" data-cat="honey">
-        <div class="merchant-thumb">
-          <img src="assets/coffee_honey_terrace.jpg" alt="مناحل سدر رجال ألمع" style="filter:hue-rotate(25deg);" loading="lazy" />
-          <div class="verified-badge">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>عسل جبلي مفحوص</span>
-          </div>
-        </div>
-        <div class="merchant-body">
-          <div>
-            <span class="merchant-category">مناحل ومحاصيل جبلية</span>
-            <h3 class="merchant-name">مناحل عسل السدر والمجرى الألمعي</h3>
-            <p class="merchant-desc">
-              عسل سدر بلدي ومجرى أبيض نادر من أشجار السدر المعمرة في أودية رجال ألمع. مفحوص مخبرياً بنسبة نقاء 100% مع شحن لجميع المناطق.
-            </p>
-          </div>
-          <div class="merchant-meta-row">
-            <span>📍 رجال ألمع · وادي العوص</span>
-            <span>⭐ 5.0 (215 تقييم)</span>
-          </div>
-          <div class="merchant-actions">
-            <button type="button" class="btn-emerald" style="padding:8px 12px;font-size:12px;" onclick="openDirectMerchant('مناحل عسل السدر والمجرى', '0550000002')">
-              <span>تواصل واتساب</span>
-            </button>
-            <button type="button" class="btn-glass" style="padding:8px 12px;font-size:12px;" onclick="openMapLocation('مناحل عسل السدر والمجرى')">
-              <span>الموقع بالخريطة</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <!-- Merchant 3: Qatt Art Gallery -->
-      <article class="merchant-card" data-cat="qatt">
-        <div class="merchant-thumb">
-          <img src="assets/rijal_almaa.jpg" alt="متجر فن القط العسيري" loading="lazy" />
-          <div class="verified-badge">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>تراث يونيسكو معتمد</span>
-          </div>
-        </div>
-        <div class="merchant-body">
-          <div>
-            <span class="merchant-category">حرف يدوية وفنون جدارية</span>
-            <h3 class="merchant-name">محترف القط العسيري الأصيل</h3>
-            <p class="merchant-desc">
-              مقتنيات فنية، لوحات جدارية، وأوشحة مرسومة بأنامل فنانات عسير المحترفات وفق رموز فن القَط العسيري المسجل بقائمة التراث الإنساني.
-            </p>
-          </div>
-          <div class="merchant-meta-row">
-            <span>📍 أبها · قرية المفتاحة التشكيلية</span>
-            <span>⭐ 4.9 (98 تقييم)</span>
-          </div>
-          <div class="merchant-actions">
-            <button type="button" class="btn-emerald" style="padding:8px 12px;font-size:12px;" onclick="openDirectMerchant('محترف القط العسيري', '0550000003')">
-              <span>تواصل واتساب</span>
-            </button>
-            <button type="button" class="btn-glass" style="padding:8px 12px;font-size:12px;" onclick="openMapLocation('محترف القط العسيري')">
-              <span>الموقع بالخريطة</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <!-- Merchant 4: Cloud Chalets -->
-      <article class="merchant-card" data-cat="stay">
-        <div class="merchant-thumb">
-          <img src="assets/adventure_hiking.jpg" alt="نزل وأكواخ مطل السحاب" loading="lazy" />
-          <div class="verified-badge">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>إقامة ريفية مرخصة</span>
-          </div>
-        </div>
-        <div class="merchant-body">
-          <div>
-            <span class="merchant-category">نزل بيئية وأكواخ جبلية</span>
-            <h3 class="merchant-name">أكواخ مطل السحاب الريفية</h3>
-            <p class="merchant-desc">
-              أكواخ حجرية وخشبية بيئية تطل مباشرة على حافة بحر الغيوم في السودة. موقد حطب، إفطار عسيري بلدي طازج، وخصوصية تامة للعائلات.
-            </p>
-          </div>
-          <div class="merchant-meta-row">
-            <span>📍 السودة · مطل جرف ريدة</span>
-            <span>⭐ 4.8 (310 تقييم)</span>
-          </div>
-          <div class="merchant-actions">
-            <button type="button" class="btn-emerald" style="padding:8px 12px;font-size:12px;" onclick="openDirectMerchant('أكواخ مطل السحاب', '0550000004')">
-              <span>احجز الكوخ</span>
-            </button>
-            <button type="button" class="btn-glass" style="padding:8px 12px;font-size:12px;" onclick="openMapLocation('أكواخ مطل السحاب')">
-              <span>الموقع بالخريطة</span>
-            </button>
-          </div>
-        </div>
-      </article>
-    </div>
+    <!-- Merchants & Directory Grid (Dynamically rendered via renderMerchants for seamless bilingual support) -->
+    <div class="merchants-grid" id="merchantsGrid"></div>
   </section>
 
   <!-- ================= 6. INTERACTIVE AI TRIP PLANNER ================= -->
@@ -1465,6 +1603,30 @@
       </div>
     </div>
   </footer>
+
+  <!-- ================= MOBILE FIXED BOTTOM NAVIGATION BAR ================= -->
+  <nav class="mobile-bottom-nav" aria-label="شريط التنقل السفلي">
+    <a href="#home" class="mobile-nav-item active" id="mob-nav-home">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span id="txt-mob-home">الرئيسية</span>
+    </a>
+    <a href="#destinations" class="mobile-nav-item" id="mob-nav-dest">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      <span id="txt-mob-dest">الوجهات</span>
+    </a>
+    <a href="#marketplace" class="mobile-nav-item" id="mob-nav-market">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span id="txt-mob-market">المتاجر</span>
+    </a>
+    <a href="#planner" class="mobile-nav-item" id="mob-nav-plan">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span id="txt-mob-plan">المخطط</span>
+    </a>
+    <button type="button" class="mobile-nav-item" onclick="openPartnerModal()" id="mob-nav-partner" style="background:none;border:none;cursor:pointer;font-family:inherit;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+      <span id="txt-mob-partner">انضم كشريك</span>
+    </button>
+  </nav>
 
   <!-- ================= 9. NATIVE <DIALOG> BOOKING & REGISTRATION MODALS ================= -->
   <!-- Modal 1: Booking Experience -->
@@ -1748,6 +1910,114 @@
     const MERCHANTS_DATA = [
       {
         id: 1,
+        cat: 'restaurant',
+        img: 'assets/asir_food.jpg',
+        filter: 'none',
+        ar: {
+          badge: 'مطبخ شعبي معتمد',
+          category: 'مطابخ وتراث الطهي العسيري',
+          name: 'قصر الحنيذ العسيري ومطاعم المرخ',
+          desc: 'حنيذ لحم بلدي طازج مطهو على الحطب وأغصان المرخ الطبيعية، مع العريكة الجنوبية والمشغوثة بالسمن البلدي وعسل السدر الصافي.',
+          location: '📍 أبها · طريق السودة السياحي',
+          rating: '⭐ 4.9 (420 تقييم)',
+          btnWhatsapp: 'حجز وتواصل مباشر',
+          btnMap: 'الموقع بالخريطة'
+        },
+        en: {
+          badge: 'Certified Culinary Heritage',
+          category: 'Authentic Asiri Cuisine & Mountain Feast',
+          name: 'Asir Haneeth Palace & Marakh Hearth',
+          desc: 'Tender local mountain lamb slow-cooked over fragrant desert Marakh wood, served alongside golden Southern Areeka, clarified ghee, and pure raw Sidr honey.',
+          location: '📍 Abha · Al-Soudah Tourist Road',
+          rating: '⭐ 4.9 (420 reviews)',
+          btnWhatsapp: 'Reserve & Contact',
+          btnMap: 'Google Maps'
+        },
+        phone: '0550000005'
+      },
+      {
+        id: 2,
+        cat: 'souk',
+        img: 'assets/asir_souk.jpg',
+        filter: 'none',
+        ar: {
+          badge: 'سوق تراثي رسمي',
+          category: 'أسواق ومقتنيات شعبية تاريخية',
+          name: 'سوق الثلاثاء الشعبي التاريخي',
+          desc: 'أقدم وأعرق أسواق عسير؛ يضم مشغولات الخوص الملونة (المصارف)، الفضيات العسيرية القديمة، الجنابي والسيوف التراثية، ومحاصيل البهارات الجبلية.',
+          location: '📍 وسط أبها · بجوار مركز الملك فهد الثقافي',
+          rating: '⭐ 4.8 (580 تقييم)',
+          btnWhatsapp: 'دليل المحلات والحرفيين',
+          btnMap: 'الموقع بالخريطة'
+        },
+        en: {
+          badge: 'Historic Heritage Landmark',
+          category: 'Historic Bazaars & Traditional Crafts',
+          name: 'Historic Souq Al-Thulatha (Tuesday Souk)',
+          desc: 'Asir’s most celebrated centuries-old traditional bazaar. Explore woven palm baskets, antique Bedouin silver, ornate Janbiya curved daggers, and wild mountain aromatics.',
+          location: '📍 Downtown Abha · Adjacent to Al-Muftaha',
+          rating: '⭐ 4.8 (580 reviews)',
+          btnWhatsapp: 'Artisan Directory',
+          btnMap: 'Google Maps'
+        },
+        phone: '0550000006'
+      },
+      {
+        id: 3,
+        cat: 'attraction',
+        img: 'assets/hero_asir_peaks.jpg',
+        filter: 'none',
+        ar: {
+          badge: 'معلم سياحي معتمد',
+          category: 'تلفريك معلق ومغامرات سحابية',
+          name: 'تلفريك السودة المعلق وإطلالات الضباب',
+          desc: 'تجربة انزلاق جوي أيقونية تأخذك من قمة السودة الشاهقة على ارتفاع 3,000م نزولاً إلى وادي العوص برجال ألمع، وسط إطلالات بانورامية ساحرة على بحر الغيوم.',
+          location: '📍 السودة · محطة التلفريك الرئيسية',
+          rating: '⭐ 4.9 (890 تقييم)',
+          btnWhatsapp: 'مواعيد التذاكر والرحلات',
+          btnMap: 'الموقع بالخريطة'
+        },
+        en: {
+          badge: 'Official Tourist Attraction',
+          category: 'Aerial Telecabin & Cloud Panorama',
+          name: 'Al-Soudah Telecabin & Peak Cable Car',
+          desc: 'Iconic cable car descent connecting Al-Soudah’s 3,000m ridge down to Rijal Almaa’s deep canyon, floating through misty peaks with 360-degree views above the cloud sea.',
+          location: '📍 Al-Soudah · Cable Car Terminal',
+          rating: '⭐ 4.9 (890 reviews)',
+          btnWhatsapp: 'Ticket Info & Timings',
+          btnMap: 'Google Maps'
+        },
+        phone: '0550000007'
+      },
+      {
+        id: 4,
+        cat: 'attraction',
+        img: 'assets/adventure_hiking.jpg',
+        filter: 'none',
+        ar: {
+          badge: 'معلم أثري ومغامرة',
+          category: 'قرية معلقة ورياضات جبلية',
+          name: 'قرية الحبلة المعلقة والرياضات الجبلية',
+          desc: 'قرية أثرية منحوتة في صدع صخري شاهق لا يمكن الوصول إليها قديماً إلا بالحبال. توفر اليوم عربات تلفريك، مسارات هايكنج جبلية، ومطلات ومقاهي شاهقة.',
+          location: '📍 الحبلة · شرق عسير',
+          rating: '⭐ 4.7 (340 تقييم)',
+          btnWhatsapp: 'استفسارات الزيارة',
+          btnMap: 'الموقع بالخريطة'
+        },
+        en: {
+          badge: 'Cliffside Historic Site',
+          category: 'Hanging Village & Mountain Adventures',
+          name: 'Habala Hanging Village & Cliff Adventure',
+          desc: 'Spectacular ancient village perched mid-cliff face in a dramatic sandstone canyon, once accessible solely by rope ladders. Features cable car rides, hiking, and cliffside cafes.',
+          location: '📍 Al-Habala · East Asir',
+          rating: '⭐ 4.7 (340 reviews)',
+          btnWhatsapp: 'Tour Inquiries',
+          btnMap: 'Google Maps'
+        },
+        phone: '0550000008'
+      },
+      {
+        id: 5,
         cat: 'coffee',
         img: 'assets/coffee_honey_terrace.jpg',
         filter: 'none',
@@ -1774,7 +2044,7 @@
         phone: '0550000001'
       },
       {
-        id: 2,
+        id: 6,
         cat: 'honey',
         img: 'assets/coffee_honey_terrace.jpg',
         filter: 'hue-rotate(25deg)',
@@ -1801,7 +2071,7 @@
         phone: '0550000002'
       },
       {
-        id: 3,
+        id: 7,
         cat: 'qatt',
         img: 'assets/rijal_almaa.jpg',
         filter: 'none',
@@ -1828,7 +2098,7 @@
         phone: '0550000003'
       },
       {
-        id: 4,
+        id: 8,
         cat: 'stay',
         img: 'assets/adventure_hiking.jpg',
         filter: 'none',
@@ -2026,7 +2296,10 @@
           { val: 'abha', text: 'أبها البهية (الفن والضباب)' }
         ],
         typeOptions: [
-          { val: 'all', text: 'جميع التجارب والمتاجر' },
+          { val: 'all', text: 'جميع التجارب والمتاجر والوجهات' },
+          { val: 'restaurant', text: 'مطابخ شعبية وحنيذ عسيري' },
+          { val: 'souk', text: 'أسواق شعبية ومقتنيات تراثية' },
+          { val: 'attraction', text: 'معالم ترفيهية وتلفريك' },
           { val: 'coffee', text: 'مزارع بن خولاني ومقاهي' },
           { val: 'honey', text: 'مناحل عسل السدر والطلح' },
           { val: 'hiking', text: 'هايكنج وطيران شراعي' },
@@ -2047,12 +2320,20 @@
         marketTitle: 'دعم المزارع والمتاجر والحرفيين الأصليين',
         marketSub: 'تسوّق وتواصل مباشرة مع أصحاب المزارع والمناحل والحرفيين في عسير بدون وسيط، مع ضمان وثيقة الجودة المعتمدة.',
         pills: {
-          all: 'الكل (٦ متاجر مميزة)',
+          all: 'الكل (٨ خيارات مميزة)',
+          restaurant: 'المطاعم الشعبية',
+          souk: 'الأسواق التراثية',
+          attraction: 'المعالم والترفيه',
           coffee: 'مزارع البن الخولاني',
           honey: 'مناحل العسل الجبلي',
-          qatt: 'فن القط والحرف التراثية',
+          qatt: 'فن القط والحرف',
           stay: 'أكواخ ونزل السحاب'
         },
+        mobHome: 'الرئيسية',
+        mobDest: 'الوجهات',
+        mobMarket: 'المتاجر',
+        mobPlan: 'المخطط',
+        mobPartner: 'انضم كشريك',
         planTag: 'المخطط الذكي للرحلات',
         planTitle: 'صمّم جدول رحلتك المثالي في ثوانٍ',
         planSub: 'اختر مدة إقامتك ونمطك المفضل، وسيقوم النظام الذكي ببناء مسار يومي متكامل يشمل المطاعم الشعبية (الحنيذ والمبثوثة)، المطلات السحابية، ومواعيد الفعاليات.',
@@ -2117,6 +2398,9 @@
         ],
         typeOptions: [
           { val: 'all', text: 'All Experiences & Stores' },
+          { val: 'restaurant', text: 'Traditional Cuisine & Haneeth' },
+          { val: 'souk', text: 'Heritage Souks & Bazaars' },
+          { val: 'attraction', text: 'Attractions & Cable Cars' },
           { val: 'coffee', text: 'Khawlani Coffee Farms & Cafés' },
           { val: 'honey', text: 'Wild Sidr & Mountain Honey' },
           { val: 'hiking', text: 'Hiking & Tandem Paragliding' },
@@ -2137,12 +2421,20 @@
         marketTitle: 'Empowering Local Farms, Merchants & Artisans',
         marketSub: 'Shop and connect directly with verified Asir coffee growers, beekeepers, and heritage artisans with zero intermediaries and official quality badges.',
         pills: {
-          all: 'All (6 Featured Stores)',
+          all: 'All (8 Featured Options)',
+          restaurant: 'Traditional Cuisine',
+          souk: 'Heritage Souks',
+          attraction: 'Attractions & Leisure',
           coffee: 'Khawlani Coffee',
           honey: 'Mountain Honey',
-          qatt: 'Al-Qatt Art & Heritage',
+          qatt: 'Al-Qatt Art & Crafts',
           stay: 'Cloud Chalets & Lodges'
         },
+        mobHome: 'Home',
+        mobDest: 'Destinations',
+        mobMarket: 'Directory',
+        mobPlan: 'Planner',
+        mobPartner: 'Partner',
         planTag: 'Smart Trip Planner',
         planTitle: 'Design Your Ideal Journey in Seconds',
         planSub: 'Choose your stay duration and preferences. Our smart planner creates a complete day-by-day itinerary including traditional eateries (Haneeth), cloud viewpoints, and events.',
@@ -2245,10 +2537,25 @@
       document.getElementById('txt-market-title').textContent = s.marketTitle;
       document.getElementById('txt-market-sub').textContent = s.marketSub;
       document.getElementById('pill-all').textContent = s.pills.all;
+      document.getElementById('pill-restaurant').textContent = s.pills.restaurant;
+      document.getElementById('pill-souk').textContent = s.pills.souk;
+      document.getElementById('pill-attraction').textContent = s.pills.attraction;
       document.getElementById('pill-coffee').textContent = s.pills.coffee;
       document.getElementById('pill-honey').textContent = s.pills.honey;
       document.getElementById('pill-qatt').textContent = s.pills.qatt;
       document.getElementById('pill-stay').textContent = s.pills.stay;
+
+      // Mobile Bottom Nav
+      const mobHome = document.getElementById('txt-mob-home');
+      if (mobHome) mobHome.textContent = s.mobHome;
+      const mobDest = document.getElementById('txt-mob-dest');
+      if (mobDest) mobDest.textContent = s.mobDest;
+      const mobMarket = document.getElementById('txt-mob-market');
+      if (mobMarket) mobMarket.textContent = s.mobMarket;
+      const mobPlan = document.getElementById('txt-mob-plan');
+      if (mobPlan) mobPlan.textContent = s.mobPlan;
+      const mobPartner = document.getElementById('txt-mob-partner');
+      if (mobPartner) mobPartner.textContent = s.mobPartner;
 
       // Trip Planner Section
       document.getElementById('txt-plan-tag').textContent = s.planTag;
